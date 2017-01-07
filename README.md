@@ -22,7 +22,7 @@ TODO: Write usage instructions
 
 *Alan [@thechutrain](https://github.com/thechutrain)
 
-*Alisa
+*Alisa [@alisaschink](https://github.com/alisaschink)
 
 *Alex [@alexrosenkranz](https://github.com/alexrosenkranz)
 
