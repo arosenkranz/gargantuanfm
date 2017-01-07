@@ -18,13 +18,13 @@ TODO: Write usage instructions
 5. Submit a pull request :D
 
 
-## Credits
+## Contributors
 
-*[thechutrain](https://github.com/thechutrain)
+*Alan [@thechutrain](https://github.com/thechutrain)
 
 *Alisa
 
-*Alex
+*Alex [@alexrosenkranz](https://github.com/alexrosenkranz)
 
 ## License
 
