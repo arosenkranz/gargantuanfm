@@ -1,13 +1,9 @@
 $(document).ready(function(){
   
-  SC.initialize({
-    client_id: '8761e61199b55df39ee27a92f2771aeb'
-  });
 
-  var dataRef = firebase.database();
   var track = '';
   var query = '';
-  var channelId;
+
 
   var trackList = [];
 
@@ -48,13 +44,7 @@ $(document).ready(function(){
     })
   };
 
-  function loadChannel() {
-    dataRef.ref('channels/' + channelId).once('value').then(function(snapshot){
-      console.log(snapshot.val());
-    })
-
-  }
-
+  // grabs selected song's value and sends it through addTrack function
   $(document).on('click', '.song', function(){
      track = $(this).attr('data-value');
      $(this).addClass('hide');
@@ -63,11 +53,12 @@ $(document).ready(function(){
 
   });
 
+  // If we want to allow removal of tracks in list before channel creation, not quite figured out yet
   $(document).on('click','.pickedSong', function() {
     $(this).attr('data-value');
   })
 
-
+  // Create channel button, still need to add some functionality to it
   $(document).on('click','.channelCreate', function(e){
     e.preventDefault();
     var channelName = $('#channelName').val().trim();
@@ -83,20 +74,8 @@ $(document).ready(function(){
     }
   })
 
-  dataRef.ref().child('channels').on('child_added', function(childSnapshot){
-    console.log(childSnapshot.val());
-
-    $('.channelList').prepend('<div class="small-4 columns"><a class="button large success channelButton" data-channel="' + childSnapshot.key + '">' + childSnapshot.val().channelName + '</a></div>');
-
-    
-  }, function(errorObject) {
-      console.log("Errors handled: " + errorObject.code);
-  });
-  $(document).on('click','.channelButton', function(){
-    channelId = $(this).data('channel').trim();
-    console.log(channelId);
-    loadChannel();
-  });
+  
+  
   
 
 });

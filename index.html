@@ -9,18 +9,9 @@
   <link rel="stylesheet" href="assets/css/foundation.css">
   <link rel="stylesheet" href="assets/css/app.css">
   <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+  <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
 
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyA7DGECkMbsXDv0-JUb9OAozaTZgL__i-U",
-      authDomain: "gargantuan-2b182.firebaseapp.com",
-      databaseURL: "https://gargantuan-2b182.firebaseio.com",
-      storageBucket: "gargantuan-2b182.appspot.com",
-      messagingSenderId: "779803240904"
-    };
-    firebase.initializeApp(config);
-  </script>
+  
 </head>
 
 <body>
@@ -66,7 +57,8 @@
           </div>
         </div>
       </div>
-    <audio controls="audio"></audio>
+    <!-- Load tracks into here for now -->
+    <audio class="demoTrack" controls="audio"></audio>
     </div>
     
   </div>
@@ -77,13 +69,35 @@
 
   </div>
 
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyA7DGECkMbsXDv0-JUb9OAozaTZgL__i-U",
+      authDomain: "gargantuan-2b182.firebaseapp.com",
+      databaseURL: "https://gargantuan-2b182.firebaseio.com",
+      storageBucket: "gargantuan-2b182.appspot.com",
+      messagingSenderId: "779803240904"
+    };
+    firebase.initializeApp(config);
+    var dataRef = firebase.database();
+    
+
+    SC.initialize({
+    client_id: '8761e61199b55df39ee27a92f2771aeb'
+    });
+  </script>
+
   <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-<!--   <script src="assets/js/vendor/jquery.js"></script>-->  
+  <!--   <script src="assets/js/vendor/jquery.js"></script>-->  
   <script src="assets/js/vendor/what-input.js"></script>
   <script src="assets/js/vendor/foundation.js"></script>
   <script src="assets/js/app.js"></script>
   <script type="text/javascript" src="assets/js/soundcloud.js"></script>
-  <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+  <script type="text/javascript" src="assets/js/channelload.js"></script>
+
+
+
+  
  
 
 </body>
