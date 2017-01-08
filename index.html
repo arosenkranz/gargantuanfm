@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gargantuan.FM</title>
+  
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/foundation.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+
+   <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDG6VHAGlu-rIdgrUL77wmehLTkM0CQapU",
+      authDomain: "samplestorage-f115f.firebaseapp.com",
+      databaseURL: "https://samplestorage-f115f.firebaseio.com",
+      storageBucket: "samplestorage-f115f.appspot.com",
+      messagingSenderId: "389297751665"
+    };
+    firebase.initializeApp(config);
+  </script>
+</head>
+
+<body>
+
+  <div class="row logo">
+    <div class="small-8 small-centered columns text-center">
+      <h1 class="title">Gargantuan.<small>fm</small></h1>
+      <a class="button large" data-toggle="channelModal">Add A Channel</a></p>
+
+      <div class="reveal small text-center" id="channelModal" data-reveal data-close-on-click="false" data-animation-in="scale-in-up">
+        <h1>Create A Channel</h1>
+        <form class="submitSong" data-abide>
+          <div class="input-wrapper">
+            <small class="error" style="display:none">Name is required and must be a string.</small>
+            <input type="text" required pattern="[a-zA-Z]+" id="channelName" placeholder="Channel Name"/>
+          </div>
+
+          <input type="text"  id="songName" placeholder="Enter A Song or Artist"/>
+          
+          <a class="searchSubmit button small float-left">Search for Song</a> 
+          
+          <div class="float-right">
+          <button type="submit" class="channelCreate button small">Finish Creating Channel</button>
+          <button type="reset" class="channelCreate button small">Reset Channel Info</button>
+          </div>
+
+        </form>
+
+        <button class="close-button" data-close aria-label="Close reveal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <div class="row">
+          <div class="small-12 columns">
+          <h2 class="underline">Songs On Channel</h2>
+            <ul class="small-block-grid-3 pickedSongs"></ul>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="small-12 columns">
+            <h2 class="underline">Pick Your Song</h2>
+            <ul class="small-block-grid-3 searchList"></ul>
+          </div>
+        </div>
+      </div>
+    <audio controls="audio"></audio>
+    </div>
+    
+  </div>
+
+  <div class="row" data-equalizer data-equalize-on="small">
+    <div class="small-8 small-centered columns text-center channelList">
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<!--   <script src="assets/js/vendor/jquery.js"></script>-->  
+  <script src="assets/js/vendor/what-input.js"></script>
+  <script src="assets/js/vendor/foundation.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/soundcloud.js"></script>
+  <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+ 
+
+</body>
+</html>
