@@ -81,7 +81,6 @@ $(document).ready(function(){
     else {
       $('.error').css('display', 'block');
     }
-
   })
 
   dataRef.ref().child('channels').on('child_added', function(childSnapshot){
