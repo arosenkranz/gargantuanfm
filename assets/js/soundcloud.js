@@ -63,7 +63,7 @@ $(document).ready(function(){
     var channelName = $('#channelName').val().trim();
 
     // Make sure user enters both a channel name and tracklist
-    if (channelName != '' || trackList != '') {
+    if (channelName != '' && trackList.length > 0) {
       dataRef.ref().child('channels').push({
         channelName : channelName,
         tracks : trackList
@@ -80,6 +80,7 @@ $(document).ready(function(){
   // Reset button
   $(document).on('click','.reset', function() {
     tracklist = [];
+    console.log(tracklist);
     $('.pickedSongs').empty();
     $('.searchList').empty();
   })
