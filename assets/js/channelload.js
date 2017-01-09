@@ -1,5 +1,7 @@
 
   var channelId;
+  var playlist = [];
+  var trackNumber = 0;
 
   dataRef.ref('channels').on('child_added', function(childSnapshot){
     // console.log(childSnapshot.val());
@@ -13,12 +15,56 @@
     channelId = $(this).data('channel').trim();
     console.log(channelId);
     loadChannel();
+
   });
 
-  // ALISA, work with this to pull the selected channel's info and pass it into our audio element pahlease 
+  // Pulls the selected channel's info and passes it into our audio element 
   function loadChannel() {
     dataRef.ref('channels/' + channelId).once('value').then(function(snapshot){
-      console.log(snapshot.val());
+      
+      //pulls selected channel's tracks 
+      var channel = snapshot.val();
+      var tracks = channel['tracks'];
+
+      console.log(channel);
+      console.log(tracks);
+
+
+      //pushes streaming urls to an array
+      for(i = 0; i < tracks.length; i++){
+        playlist.push(tracks[i].url);
+      };
+
+      console.log(playlist);
+      playTracks();
+       
+      //use html5 audio to play tracks
+      function playTracks(){
+
+        var trackUrl = playlist[trackNumber];
+
+        if (trackNumber < playlist.length) {
+
+          $('audio').attr("src", trackUrl + "?client_id=8761e61199b55df39ee27a92f2771aeb");
+          $('audio').onended = function(){
+            nextSong();
+          }
+        } else {
+          replay();
+
+        }
+      }
+
+      function nextSong(){
+        trackNumber++;
+        playTracks();
+      }
+
+      function replay{
+        trackNumber = 0;
+        playTracks();
+      }
+    
     })
   }
   
