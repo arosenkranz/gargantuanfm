@@ -46,7 +46,8 @@
         if (trackNumber < playlist.length) {
 
           $('audio').attr("src", trackUrl + "?client_id=8761e61199b55df39ee27a92f2771aeb");
-          $('audio').onended = function(){
+          $('audio').get(0).play();
+          $('audio').get(0).onended = function(){
             nextSong();
           }
         } else {
@@ -55,12 +56,14 @@
         }
       }
 
+      //function to play next song
       function nextSong(){
         trackNumber++;
         playTracks();
       }
 
-      function replay{
+      //replays playlist
+      function replay() {
         trackNumber = 0;
         playTracks();
       }
