@@ -23,7 +23,7 @@ $(document).ready(function(){
        order: 'hotness'
     }).then(function(tracks) {
       for (var i = 0; i < tracks.length; i++) {
-        $('.searchList').append('<li><a class="button small song" data-value="' + tracks[i].id + '">' + tracks[i].user.username + " - " +  tracks[i].title + '</a></li>');
+        $('.searchList').append('<li class="column column-block"><a class="button small song" data-value="' + tracks[i].id + '">' + tracks[i].user.username + " - " +  tracks[i].title + '</a></li>');
       }
     })
   };
@@ -39,7 +39,7 @@ $(document).ready(function(){
         url : player.stream_url,
         artist : player.user.username
       });
-      $('.pickedSongs').append('<li><button class="button small success pickedSong" data-value="' + player.id + '">'+ player.title + '</button></li>');
+      $('.pickedSongs').append('<li class="column column-block"><button class="button small success pickedSong" data-value="' + player.id + '">'+ player.title + '</button></li>');
     })
     $('#songName').attr('placeholder','Search for another song or artist!')
   };

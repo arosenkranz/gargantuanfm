@@ -1,9 +1,9 @@
-ul {
+/*ul {
   columns: 3;
   -webkit-columns: 3;
   -moz-columns: 3;
   list-style-position: inside;
-}
+}*/
 
 li {
   list-style: none;
