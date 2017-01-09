@@ -31,7 +31,7 @@ $(document).ready(function(){
 // Gets song information based on clicked song, adds to Tracklist and appends to Picked Songs area for channel
   function addTrack() {
     SC.get('/tracks/' + track).then(function(player){
-      $('audio').attr("src", player.stream_url + "?client_id=8761e61199b55df39ee27a92f2771aeb");
+      
       console.log(track);
       trackList.push({
         id : player.id,
@@ -40,8 +40,8 @@ $(document).ready(function(){
         artist : player.user.username
       });
       $('.pickedSongs').append('<li><button class="button small success pickedSong" data-value="' + player.id + '">'+ player.title + '</button></li>');
-
     })
+    $('#songName').attr('placeholder','Search for another song or artist!')
   };
 
   // grabs selected song's value and sends it through addTrack function
@@ -50,7 +50,6 @@ $(document).ready(function(){
      $(this).addClass('hide');
      console.log(track);
      addTrack();
-
   });
 
   // If we want to allow removal of tracks in list before channel creation, not quite figured out yet
@@ -62,21 +61,29 @@ $(document).ready(function(){
   $(document).on('click','.channelCreate', function(e){
     e.preventDefault();
     var channelName = $('#channelName').val().trim();
+
+    // Make sure user enters both a channel name and tracklist
     if (channelName != '' || trackList != '') {
       dataRef.ref().child('channels').push({
         channelName : channelName,
         tracks : trackList
       })
       trackList = [];
+      $('.pickedSongs').html('<h3>Congrats on your new Gargantuan station!</h3>');
+      $('.searchList').empty();
     }
     else {
       $('.error').css('display', 'block');
     }
+  });
+
+  // Reset button
+  $(document).on('click','.reset', function() {
+    tracklist = [];
+    $('.pickedSongs').empty();
+    $('.searchList').empty();
   })
 
-  
-  
-  
 
 });
 

@@ -3,7 +3,7 @@
 
   dataRef.ref('channels').on('child_added', function(childSnapshot){
     // console.log(childSnapshot.val());
-    $('.channelList').prepend('<div class="small-4 columns"><a class="button large success channelButton" data-channel="' + childSnapshot.key + '">' + childSnapshot.val().channelName + '</a></div>');
+    $('.channelList').prepend('<div class="column column-block"><a class="button large success channelButton" data-channel="' + childSnapshot.key + '">' + childSnapshot.val().channelName + '</a></div>');
   }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);
   });
