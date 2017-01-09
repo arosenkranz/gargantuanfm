@@ -13,6 +13,7 @@
   // When a channel is clicked, 
   $(document).on('click','.channelButton', function(){
     channelId = $(this).data('channel').trim();
+    playlist = [];
     console.log(channelId);
     loadChannel();
 
