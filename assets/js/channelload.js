@@ -1,5 +1,7 @@
 
   var channelId;
+  var playlist = [];
+
 
   dataRef.ref('channels').on('child_added', function(childSnapshot){
     // console.log(childSnapshot.val());
@@ -13,12 +15,45 @@
     channelId = $(this).data('channel').trim();
     console.log(channelId);
     loadChannel();
+
   });
 
-  // ALISA, work with this to pull the selected channel's info and pass it into our audio element pahlease 
+  // Pulls the selected channel's info and passes it into our audio element 
   function loadChannel() {
     dataRef.ref('channels/' + channelId).once('value').then(function(snapshot){
-      console.log(snapshot.val());
+      
+      //pulls selected channel's tracks and pushes streaming urls to an array
+        var channel = snapshot.val();
+        var tracks = channel['tracks'];
+
+        console.log(channel);
+        console.log(tracks);
+
+
+        for(i = 0; i < tracks.length; i++){
+          playlist.push(tracks[i].url);
+        }
+
+        console.log(playlist);
+
+
+
+      //use soundManager to play tracks
+        //soundManager.createSound({
+        //id: 'aBassDrum',
+        //url: '../mpc/audio/AMB_BD_1.mp3',
+      // multiShot: false,
+      // when the first sound finishes...
+        //onfinish: function() {
+      // create and play the second.
+      //soundManager.createSound({
+        //id: 'aRimSound',
+        //url: '../mpc/audio/AMB_RIM1.mp3'
+        //}).play();
+        //}
+        //});
+        //soundManager.play('aBassDrum');
+      //console.log(snapshot.val());
     })
   }
   
