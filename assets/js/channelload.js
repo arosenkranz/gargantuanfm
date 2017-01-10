@@ -78,7 +78,7 @@
         
       //function to play previous song
       var prevSong = debounce(function(){
-        if (trackNumber < 0){
+        if (trackNumber > 0){
           trackNumber--;
           playTracks();
         } else{
