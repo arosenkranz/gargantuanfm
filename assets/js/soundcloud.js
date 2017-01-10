@@ -4,6 +4,8 @@ $(document).ready(function(){
   var track = '';
   var query = '';
   var trackList = [];
+  var song = document.querySelector('audio');
+  console.log(song);
 
   $(document).on('click','.search-submit', function(e){
     e.preventDefault();
@@ -11,15 +13,6 @@ $(document).ready(function(){
     query = $('#songName').val().trim();
     getUser();
   })
-
-  $(".show-button").on("click", function() {
-    if ($('.show-button').html() === "Close Player"){
-      $('.show-button').html('Open Player');
-    }
-    else if ($('.show-button').html() === "Open Player") {
-      $('.show-button').html('Close Player');
-    }
-  });
 
 // Query songs from SoundCloud
   function getUser() {
@@ -92,18 +85,52 @@ $(document).ready(function(){
     $('.search-list').empty();
   })
 
-  $('.play-pause').on('click',function(){
-    if($(this).hasClass() === 'fi-play') {
-      $(this).removeClass('fi-play')
-      .addClass('fi-pause');
-      $('audio').pause();
-    }
-    else if ($(this).hasClass() === 'fi-pause') {
+  $(document).on('click', '#play-pause', function(){
+    
+    if($(this).hasClass('fi-pause')) {
       $(this).removeClass('fi-pause')
       .addClass('fi-play');
-      $('audio').play();
+      song.pause();
     }
-  })
+    else if ($(this).hasClass('fi-play')) {
+      $(this).removeClass('fi-play')
+      .addClass('fi-pause');
+      song.play();
+    }
+  });
+
+  function currentTime() {
+    var song = document.querySelector('audio');
+    var time = Math.floor(song.currentTime).toString();
+   
+    var momentTime = moment(time,"s").format("mm:ss");
+    $('.current-time').html(momentTime);
+  }
+
+  setInterval(currentTime, 0);
+
+  $(".show-button").on("click", function() {
+    if ($('.show-button').html() === "Close Player"){
+      $('.show-button').html('Open Player');
+    }
+    else if ($('.show-button').html() === "Open Player") {
+      $('.show-button').html('Close Player');
+    }
+  });
+
+  $(".show-channels").on("click", function() {
+    if ($('.show-channels').html() === 'Hide Channels'){
+      $('.show-channels').html('Show Channels');
+      $('.logo').animate({opacity: '0'}, 'slow');
+      $('.channelList').animate({opacity: '0'}, 'slow');
+    }
+    else if ($('.show-channels').html() === 'Show Channels') {
+      $('.show-channels').html('Hide Channels');
+      $('.logo').animate({opacity: '1'}, 'slow');
+      $('.channelList').animate({opacity: '1'}, 'slow');
+
+    }
+  });
 
 
 });

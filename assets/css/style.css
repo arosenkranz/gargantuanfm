@@ -8,15 +8,25 @@ audio{
 
 }
 
+.logo {
+  margin-top: 10vh;
+}
 .track-player {
   height: 10vh;
-  min-height: 10vh;
+  min-height: 150px;
 }
 
 .show-button {
   position: fixed;
   margin: auto;
   bottom: 15vh;
+}
+
+.show-channels {
+  position: fixed;
+  margin: auto;
+  bottom: 15vh;
+  right: 0;
 }
 
 .js-off-canvas-overlay {
