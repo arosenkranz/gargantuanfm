@@ -79,7 +79,11 @@
     <button type="button" class="button" data-toggle="offCanvasBottom">Open Menu</button>
   </div>
   <div class="off-canvas position-bottom expanded text-center row is-open trackPlayer" id="offCanvasBottom" data-off-canvas data-transition="overlap" > 
-    <audio class="demoTrack" controls="audio" autoplay="true"></audio>
+    <div id="audioControl">
+      <div id="prevButton"><<</div>
+      <audio class="demoTrack" controls="audio" autoplay="true"></audio>
+      <div id="skipButton">>></div>
+    </div>
   </div>
 
   <script>

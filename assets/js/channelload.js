@@ -63,12 +63,29 @@
         playTracks();
       }
 
+      //function to play previous song
+      function prevSong(){
+        trackNumber--;
+        playTracks();
+      }    
+
       //replays playlist
       function replay() {
         trackNumber = 0;
         playTracks();
       }
-    
+
+      //plays previous track when prevButton clicked
+      $(document).on('click','#prevButton', function(){
+        prevSong();
+      });
+
+      //plays next track when skipButton clicked
+      $(document).on('click','#skipButton', function(){
+        nextSong();
+      });
+        
+        
     })
   }
   
