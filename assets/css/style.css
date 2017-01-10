@@ -22,3 +22,33 @@ li {
 .js-off-canvas-overlay {
   display: none !important;
 }
+
+#audioControl{
+  display: inline-block;
+
+}
+
+#prevButton{
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: white;
+  padding: 2px;
+  float: left;
+  margin: 5px;
+
+}
+
+audio{
+  float: left;
+  margin: 5px;
+
+}
+
+#skipButton{
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: white;
+  padding: 2px;
+  float: left;
+  margin: 5px;
+}
