@@ -1,7 +1,7 @@
 
   var channelId;
   var playlist = [];
-  var trackNumber = 0;
+  var trackNumber;
 
   dataRef.ref('channels').on('child_added', function(childSnapshot){
     // console.log(childSnapshot.val());
@@ -14,6 +14,7 @@
   $(document).on('click','.channelButton', function(){
     channelId = $(this).data('channel').trim();
     playlist = [];
+    trackNumber = 0;
     console.log(channelId);
     loadChannel();
 
@@ -75,14 +76,6 @@
         };
       };
         
-      //function to play next song
-      var nextSong = debounce(function(){
-        trackNumber++;
-        playTracks();
-      }, 500);
-
-      window.addEventListener('resize', nextSong);
-
       //function to play previous song
       var prevSong = debounce(function(){
         if (trackNumber < 0){
@@ -91,9 +84,17 @@
         } else{
           replay();
         }
-      }, 500);
+      }, 250);
 
       window.addEventListener('resize', prevSong);   
+
+       //function to play next song
+      var nextSong = debounce(function(){
+        trackNumber++;
+        playTracks();
+      }, 250);
+
+      window.addEventListener('resize', nextSong);
 
       //replays playlist
       function replay() {
