@@ -101,9 +101,9 @@ $(document).ready(function(){
 
   function currentTime() {
     var song = document.querySelector('audio');
-    var time = Math.floor(song.currentTime).toString();
+    var time = Math.floor(song.currentTime);
    
-    var momentTime = moment(time,"s").format("mm:ss");
+    var momentTime = moment().minute(0).seconds(time).format("mm:ss");
     $('.current-time').html(momentTime);
   }
 
