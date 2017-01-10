@@ -1,6 +1,7 @@
 
   var channelId;
   var playlist = [];
+  var artists = [];
   var trackNumber;
 
   dataRef.ref('channels').on('child_added', function(childSnapshot){
@@ -13,6 +14,7 @@
   // When a channel is clicked, 
   $(document).on('click','.channelButton', function(){
     channelId = $(this).data('channel').trim();
+    artists = [];
     playlist = [];
     trackNumber = 0;
     console.log(channelId);
@@ -34,6 +36,7 @@
 
       //pushes streaming urls into an array
       for(i = 0; i < tracks.length; i++){
+        artists.push(tracks[i].artist + ' - ' + tracks[i].trackName);
         playlist.push(tracks[i].url);
       };
 
@@ -43,6 +46,8 @@
       function playTracks(){
 
         var trackUrl = playlist[trackNumber];
+        var songInfo = artists[trackNumber];
+        $('.song-info').html(songInfo);
 
         if (trackNumber < playlist.length) {
 

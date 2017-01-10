@@ -3,17 +3,23 @@ $(document).ready(function(){
 
   var track = '';
   var query = '';
-
-
   var trackList = [];
 
-  $(document).on('click','.searchSubmit', function(e){
+  $(document).on('click','.search-submit', function(e){
     e.preventDefault();
-    $('.searchList').empty();
+    $('.search-list').empty();
     query = $('#songName').val().trim();
     getUser();
-
   })
+
+  $(".show-button").on("click", function() {
+    if ($('.show-button').html() === "Close Player"){
+      $('.show-button').html('Open Player');
+    }
+    else if ($('.show-button').html() === "Open Player") {
+      $('.show-button').html('Close Player');
+    }
+  });
 
 // Query songs from SoundCloud
   function getUser() {
@@ -23,7 +29,7 @@ $(document).ready(function(){
        order: 'hotness'
     }).then(function(tracks) {
       for (var i = 0; i < tracks.length; i++) {
-        $('.searchList').append('<li class="column column-block"><a class="button small song" data-value="' + tracks[i].id + '">' + tracks[i].user.username + " - " +  tracks[i].title + '</a></li>');
+        $('.search-list').append('<li class="column column-block"><a class="button small song" data-value="' + tracks[i].id + '">' + tracks[i].user.username + " - " +  tracks[i].title + '</a></li>');
       }
     })
   };
@@ -39,6 +45,7 @@ $(document).ready(function(){
         url : player.stream_url,
         artist : player.user.username
       });
+
       $('.pickedSongs').append('<li class="column column-block"><button class="button small success pickedSong" data-value="' + player.id + '">'+ player.title + '</button></li>');
     })
     $('#songName').attr('placeholder','Search for another song or artist!')
@@ -58,9 +65,9 @@ $(document).ready(function(){
   })
 
   // Create channel button, still need to add some functionality to it
-  $(document).on('click','.channelCreate', function(e){
+  $(document).on('click','.channel-create', function(e){
     e.preventDefault();
-    var channelName = $('#channelName').val().trim();
+    var channelName = $('#channel-name').val().trim();
 
     // Make sure user enters both a channel name and tracklist
     if (channelName != '' && trackList.length > 0) {
@@ -70,7 +77,7 @@ $(document).ready(function(){
       })
       trackList = [];
       $('.pickedSongs').html('<h3>Congrats on your new Gargantuan station!</h3>');
-      $('.searchList').empty();
+      $('.search-list').empty();
     }
     else {
       $('.callout').css('display', 'block');
@@ -81,10 +88,22 @@ $(document).ready(function(){
   $(document).on('click','.reset', function() {
     tracklist = [];
     console.log(tracklist);
-    $('.pickedSongs').empty();
-    $('.searchList').empty();
+    $('.picked-songs').empty();
+    $('.search-list').empty();
+  })
+
+  $('.play-pause').on('click',function(){
+    if($(this).hasClass() === 'fi-play') {
+      $(this).removeClass('fi-play')
+      .addClass('fi-pause');
+      $('audio').pause();
+    }
+    else if ($(this).hasClass() === 'fi-pause') {
+      $(this).removeClass('fi-pause')
+      .addClass('fi-play');
+      $('audio').play();
+    }
   })
 
 
 });
-

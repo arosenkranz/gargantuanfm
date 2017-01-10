@@ -1,27 +1,28 @@
-/*ul {
-  columns: 3;
-  -webkit-columns: 3;
-  -moz-columns: 3;
-  list-style-position: inside;
-}*/
-
 li {
   list-style: none;
 }
 
-.trackPlayer {
-  height: 10vh;
+audio{
+  float: left;
+  margin: 5px;
+
 }
 
-.showButton {
+.track-player {
+  height: 10vh;
+  min-height: 10vh;
+}
+
+.show-button {
   position: fixed;
   margin: auto;
-  bottom: 100px;
+  bottom: 15vh;
 }
 
 .js-off-canvas-overlay {
   display: none !important;
 }
+
 
 #audioControl{
   display: inline-block;
@@ -33,12 +34,6 @@ li {
   border-width: 1px;
   border-color: white;
   padding: 2px;
-  float: left;
-  margin: 5px;
-
-}
-
-audio{
   float: left;
   margin: 5px;
 
