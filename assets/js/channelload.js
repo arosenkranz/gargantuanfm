@@ -22,7 +22,7 @@
   // Pulls the selected channel's info and passes it into our audio element 
   function loadChannel() {
     dataRef.ref('channels/' + channelId).once('value').then(function(snapshot){
-      
+
       //pulls selected channel's tracks 
       var channel = snapshot.val();
       var tracks = channel['tracks'];
@@ -31,14 +31,13 @@
       console.log(tracks);
 
 
-      //pushes streaming urls to an array
+      //pushes streaming urls into an array
       for(i = 0; i < tracks.length; i++){
         playlist.push(tracks[i].url);
       };
 
       console.log(playlist);
-      playTracks();
-       
+
       //use html5 audio to play tracks
       function playTracks(){
 
@@ -55,25 +54,52 @@
           replay();
 
         }
-      }
+      };
 
+
+      playTracks();
+
+      //keeps same function from running before previous call is finished
+      function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+          var context = this, args = arguments;
+          var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+          };
+          var callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+          if (callNow) func.apply(context, args);
+        };
+      };
+        
       //function to play next song
-      function nextSong(){
+      var nextSong = debounce(function(){
         trackNumber++;
         playTracks();
-      }
+      }, 500);
+
+      window.addEventListener('resize', nextSong);
 
       //function to play previous song
-      function prevSong(){
-        trackNumber--;
-        playTracks();
-      }    
+      var prevSong = debounce(function(){
+        if (trackNumber < 0){
+          trackNumber--;
+          playTracks();
+        } else{
+          replay();
+        }
+      }, 500);
+
+      window.addEventListener('resize', prevSong);   
 
       //replays playlist
       function replay() {
         trackNumber = 0;
         playTracks();
-      }
+      };
 
       //plays previous track when prevButton clicked
       $(document).on('click','#prevButton', function(){
@@ -85,8 +111,7 @@
         nextSong();
       });
         
-        
     })
-  }
+  };
   
 
