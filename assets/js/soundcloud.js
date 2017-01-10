@@ -39,7 +39,7 @@ $(document).ready(function(){
         artist : player.user.username
       });
 
-      $('.pickedSongs').append('<li class="column column-block"><button class="button small success pickedSong" data-value="' + player.id + '">'+ player.title + '</button></li>');
+      $('.picked-songs').append('<li class="column column-block"><button class="button small success picked-song" data-value="' + player.id + '">'+ player.title + '</button></li>');
     })
     $('#songName').attr('placeholder','Search for another song or artist!')
   };
