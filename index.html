@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/foundation.css">
   <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
   <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
 
@@ -15,59 +16,70 @@
 </head>
 
 <body>
-  
-  <div class="row logo">
-    <div class="small-8 small-centered columns text-center">
-      <h1 class="title">Gargantuan.<small>fm</small></h1>
-      <a class="button large" data-toggle="channelModal">Add A Channel</a></p>
+ 
+    <div class="row logo">
+      <div class="small-8 small-centered columns text-center">
+        <h1 class="title">Gargantuan.<small>fm</small></h1>
+        <a class="button large" data-toggle="channelModal">Add A Channel</a></p>
 
-      <div class="reveal small text-center" id="channelModal" data-reveal data-close-on-click="false" data-animation-in="scale-in-up">
-        <h1>Create A Channel</h1>
-        <form class="submitSong" data-abide>
-          <div class="input-wrapper">
-            <small class="error" style="display:none">Name is required and must be a string.</small>
-            <input type="text" required pattern="[a-zA-Z]+" id="channelName" placeholder="Channel Name"/>
+        <div class="reveal small text-center" id="channelModal" data-reveal data-close-on-click="false" data-animation-in="scale-in-up">
+          <h1>Create A Channel</h1>
+          <form class="submitSong" data-abide>
+            <div class="input-wrapper">
+              <div class="alert callout" data-closable="slide-out-right" style="display:none"><p>Name is required and must be a string.</p> 
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close><span aria-hidden="true">&times;</span></button>
+              </div>
+              
+              <input type="text" required pattern="[a-zA-Z]+" id="channelName" placeholder="Channel Name"/>
+            </div>
+
+            <input type="text"  id="songName" placeholder="Enter A Song or Artist"/>
+            
+            <a class="searchSubmit button small float-left">Search for Song</a> 
+            
+            <div class="float-right">
+            <button type="submit" class="channelCreate button small">Finish Creating Channel</button>
+            <button type="reset" class="reset button small">Reset Channel Info</button>
+            </div>
+
+          </form>
+
+          <button class="close-button" data-close aria-label="Close reveal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+          <div class="row">
+            <div class="small-12 columns">
+            <h2 class="underline">Songs On Channel</h2>
+              <ul class="small-up-2 medium-up-3 pickedSongs"></ul>
+            </div>
           </div>
+          <div class="row ">
+            <div class="small-12 columns">
+              <h2 class="underline">Pick Your Song</h2>
 
-          <input type="text"  id="songName" placeholder="Enter A Song or Artist"/>
-          
-          <a class="searchSubmit button small float-left">Search for Song</a> 
-          
-          <div class="float-right">
-          <button type="submit" class="channelCreate button small">Finish Creating Channel</button>
-          <button type="reset" class="reset button small">Reset Channel Info</button>
-          </div>
-
-        </form>
-
-        <button class="close-button" data-close aria-label="Close reveal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
-        <div class="row">
-          <div class="small-12 columns">
-          <h2 class="underline">Songs On Channel</h2>
-            <ul class="small-up-2 medium-up-3 pickedSongs"></ul>
+              <ul class="small-up-2 medium-up-3 searchList"></ul>
+            </div>
           </div>
         </div>
-        <div class="row ">
-          <div class="small-12 columns">
-            <h2 class="underline">Pick Your Song</h2>
-
-            <ul class="small-up-2 medium-up-3 searchList"></ul>
-          </div>
-        </div>
+      <!-- Load tracks into here for now -->
+      
       </div>
-    <!-- Load tracks into here for now -->
-    <audio class="demoTrack" controls="audio"></audio>
+      
     </div>
-    
+
+    <div class="row" >
+
+      <div class="small-8 small-centered small-up-2 medium-up-3 large-up-4 text-center channelList">
+      </div>
+  
+    </div>
+  
+  <div class="row showButton">
+    <button type="button" class="button" data-toggle="offCanvasBottom">Open Menu</button>
   </div>
-
-  <div class="row" >
-    <div class="small-8 small-centered small-up-2 medium-up-3 large-up-4 text-center channelList">
-    </div>
-
+  <div class="off-canvas position-bottom expanded text-center row is-open trackPlayer" id="offCanvasBottom" data-off-canvas data-transition="overlap" > 
+    <audio class="demoTrack" controls="audio" autoplay="true"></audio>
   </div>
 
   <script>

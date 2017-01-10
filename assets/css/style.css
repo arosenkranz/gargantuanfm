@@ -7,5 +7,18 @@
 
 li {
   list-style: none;
+}
 
+.trackPlayer {
+  height: 10vh;
+}
+
+.showButton {
+  position: fixed;
+  margin: auto;
+  bottom: 100px;
+}
+
+.js-off-canvas-overlay {
+  display: none !important;
 }

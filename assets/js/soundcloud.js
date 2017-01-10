@@ -73,7 +73,7 @@ $(document).ready(function(){
       $('.searchList').empty();
     }
     else {
-      $('.error').css('display', 'block');
+      $('.callout').css('display', 'block');
     }
   });
 
