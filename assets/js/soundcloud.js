@@ -112,9 +112,13 @@ $(document).ready(function(){
   $(".show-button").on("click", function() {
     if ($('.show-button').html() === "Close Player"){
       $('.show-button').html('Open Player');
+      $('.show-button').animate({bottom: '0'}, 'fast')
+      $('.show-channels').animate({bottom: '0'}, 'fast')
     }
     else if ($('.show-button').html() === "Open Player") {
       $('.show-button').html('Close Player');
+      $('.show-button').animate({bottom: '15vh'}, 'fast')
+      $('.show-channels').animate({bottom: '15vh'}, 'fast')
     }
   });
 
