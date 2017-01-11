@@ -22,7 +22,7 @@ $(document).ready(function(){
        order: 'hotness'
     }).then(function(tracks) {
       for (var i = 0; i < tracks.length; i++) {
-        $('.search-list').append('<li class="column column-block"><a class="button small song" data-value="' + tracks[i].id + '">' + tracks[i].user.username + " - " +  tracks[i].title + '</a></li>');
+        $('.search-list').append('<div class="column column-block" data-equalizer-watch><a class="button small song" data-value="' + tracks[i].id + '">' + tracks[i].user.username + " - " +  tracks[i].title + '</a></div>');
       }
     })
   };
