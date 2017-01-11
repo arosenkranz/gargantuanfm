@@ -44,9 +44,11 @@ function playNext(){
   // console.log(this);
   // console.log(currentVideoIndex);
   currentVideoIndex ++;
+
   if (currentVideoIndex == videos_array.length){
     currentVideoIndex = 0;
   };
+
   var video = videos_array[currentVideoIndex];
   var videoId = video.id;
   // console.log(videoId);
@@ -132,8 +134,10 @@ function getMp4file(videoID){
 // ----------- #3 playVideo()----------
 function playVideo(url){
   // console.info(mp4_url);
-  $("source").attr("src", url);
-  $("video")[0].load();
+  // $("source").attr("src", url);
+  // $("video")[0].load();
+  $("video").attr("src", url);
+  $("video").load();
 }
 
 // ---------------------- END: YOUTUBE API -----------------------------------
