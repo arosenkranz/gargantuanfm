@@ -18,6 +18,9 @@ video {
   transform: translateX(-50%) translateY(-50%);
 }
 
+
+
+
 .logo {
   margin-top: 10vh;
 }
@@ -43,25 +46,14 @@ video {
 
 
 #audioControl{
-  display: inline-block;
-
+  display: block;
 }
 
-#prevButton{
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: white;
-  padding: 2px;
-  margin: 5px 5px 5px 0;
-
-}
-
-#skipButton{
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: white;
-  padding: 2px;
-  margin: 5px 0 5px 5px;
+#audioControl i {
+  font-size: 75px;
+  line-height: 110px;
+  margin: 10px;
+  padding: 10px;
 }
 
 #channel-modal {

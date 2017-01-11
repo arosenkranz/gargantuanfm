@@ -19,8 +19,8 @@
 </head>
 
 <body>
-    <video poster="assets/images/static.gif"></video>
- 
+<!--     <video poster="assets/images/static.gif"></video>
+ --> 
   <div class="main-body">
     <div class="row logo">
       <div class="small-8 small-centered columns text-center">
@@ -85,23 +85,21 @@
       <button type="button" class="button small show-channels float-right">Hide Channels</button>
     </div>
 
-    <div class="off-canvas position-bottom expanded text-center row is-open track-player" id="offCanvasBottom" data-off-canvas data-transition="overlap" > 
-      <div class="columns small-5 medium-offset-1">
-        <div class="row">
+    <div class="off-canvas position-bottom expanded row is-open track-player" id="offCanvasBottom" data-off-canvas data-transition="overlap" > 
+      <div class="columns small-12 medium-4 text-right">
           <div class="playlist-info"></div>
           <div class="song-info"></div>
           <div class="current-time"></div>
-          
-          <div id="audioControl">
-            <i id="prevButton" class="fi-previous"></i>
-            <i id="play-pause" class="fi-pause"></i>
-            <i id="skipButton" class="fi-next"></i>
-          </div>
           <audio class="demoTrack"  autoplay="true"></audio>
-        </div>
-        
       </div>
-      <div class="columns small-5">
+      <div class="columns small-12 medium-4 text-center">
+        <div id="audioControl">
+          <i id="prevButton" class="fi-previous"></i>
+          <i id="play-pause" class="fi-pause"></i>
+          <i id="skipButton" class="fi-next"></i>
+        </div>
+      </div>
+      <div class="columns small-12 medium-4">
         &nbsp;
       </div>
     </div>
