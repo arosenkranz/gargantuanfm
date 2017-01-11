@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin:400,400i,700');
+
+body {
+  font-family: 'Cabin', sans-serif;
+  margin: 0;
+}
+
 li {
   list-style: none;
 }
@@ -8,14 +15,19 @@ audio{
 
 }
 
-video {
+video{
+  position: fixed;
   top: 50%;
   left: 50%;
   min-width: 100%;
-  position:fixed;
   min-height: 100%;
+  width: auto;
+  height: auto;
   z-index: -100;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%); /* super important to move it yo! */
+  /*background: url('../static.gif') no-repeat;*/
+  background-size: cover;
+  transition: 1s opacity;
 }
 
 
@@ -31,6 +43,14 @@ video {
   min-height: 125px;
 }
 
+.music-information {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.playlist-info {
+  font-weight: 700;
+}
 
 .display-buttons {
   position: fixed;
@@ -49,11 +69,12 @@ video {
 
 #audioControl{
   display: block;
+  margin-top: 10px;
 }
 
 #audioControl i {
   font-size: 75px;
-  line-height: 110px;
+  line-height: 70px;
   margin: 10px;
   padding: 10px;
 }
