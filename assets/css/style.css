@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin:400,400i,700');
+
+body {
+  font-family: 'Cabin', sans-serif;
+  margin: 0;
+}
+
 li {
   list-style: none;
 }
@@ -8,25 +15,51 @@ audio{
 
 }
 
+video{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%); /* super important to move it yo! */
+  /*background: url('../static.gif') no-repeat;*/
+  background-size: cover;
+  transition: 1s opacity;
+}
+
+
 .logo {
   margin-top: 10vh;
 }
-.track-player {
-  height: 10vh;
-  min-height: 150px;
+.title {
+  margin-bottom:20px;
 }
 
-.show-button {
+.track-player {
+  height: 10vh;
+  min-height: 125px;
+}
+
+.music-information {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.playlist-info {
+  font-weight: 700;
+}
+
+.display-buttons {
   position: fixed;
   margin: auto;
   bottom: 15vh;
 }
 
 .show-channels {
-  position: fixed;
-  margin: auto;
-  bottom: 15vh;
-  right: 0;
+  float: right;
 }
 
 .js-off-canvas-overlay {
@@ -35,25 +68,18 @@ audio{
 
 
 #audioControl{
-  display: inline-block;
-
+  display: block;
+  margin-top: 10px;
 }
 
-#prevButton{
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: white;
-  padding: 2px;
-  float: left;
-  margin: 5px;
-
+#audioControl i {
+  font-size: 75px;
+  line-height: 70px;
+  margin: 10px;
+  padding: 10px;
 }
 
-#skipButton{
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: white;
-  padding: 2px;
-  float: left;
-  margin: 5px;
+#channel-modal {
+  max-height: 80vh;
+  padding: 20px;
 }
