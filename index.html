@@ -19,8 +19,8 @@
 </head>
 
 <body>
-<!--     <video poster="assets/images/static.gif"></video>
- --> 
+    <!-- <video src="http://www.youtube.com/watch?v=06ufjbInYwo" >    </video> -->
+  
   <div class="main-body">
     <div class="row logo">
       <div class="small-8 small-centered columns text-center">
@@ -85,11 +85,10 @@
       <button type="button" class="button small show-channels float-right">Hide Channels</button>
     </div>
 
-    <div class="off-canvas position-bottom expanded row is-open track-player" id="offCanvasBottom" data-off-canvas data-transition="overlap" > 
-      <div class="columns small-12 medium-4 text-right">
+    <div class="off-canvas position-bottom expanded row is-open track-player" id="offCanvasBottom" data-off-canvas data-transition="overlap"> 
+      <div class="columns small-12 medium-4 music-information text-right">
           <div class="playlist-info"></div>
           <div class="song-info"></div>
-          <div class="current-time"></div>
           <audio class="demoTrack"  autoplay="true"></audio>
       </div>
       <div class="columns small-12 medium-4 text-center">
@@ -98,6 +97,8 @@
           <i id="play-pause" class="fi-pause"></i>
           <i id="skipButton" class="fi-next"></i>
         </div>
+        <div class="current-time"></div>
+
       </div>
       <div class="columns small-12 medium-4">
         &nbsp;
@@ -123,7 +124,8 @@
   </script>
 
   <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-  <!--   <script src="assets/js/vendor/jquery.js"></script>-->  
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/youtube.js"></script>
   <script src="assets/js/vendor/what-input.js"></script>
   <script src="assets/js/vendor/foundation.js"></script>
   <script src="assets/js/app.js"></script>
