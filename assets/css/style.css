@@ -8,25 +8,29 @@ audio{
 
 }
 
+video {
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  position:fixed;
+  min-height: 100%;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .logo {
   margin-top: 10vh;
 }
 .track-player {
   height: 10vh;
-  min-height: 150px;
+  min-height: 125px;
 }
 
-.show-button {
+
+.display-buttons {
   position: fixed;
   margin: auto;
   bottom: 15vh;
-}
-
-.show-channels {
-  position: fixed;
-  margin: auto;
-  bottom: 15vh;
-  right: 0;
 }
 
 .js-off-canvas-overlay {
@@ -44,8 +48,7 @@ audio{
   border-width: 1px;
   border-color: white;
   padding: 2px;
-  float: left;
-  margin: 5px;
+  margin: 5px 5px 5px 0;
 
 }
 
@@ -54,6 +57,10 @@ audio{
   border-width: 1px;
   border-color: white;
   padding: 2px;
-  float: left;
-  margin: 5px;
+  margin: 5px 0 5px 5px;
+}
+
+#channel-modal {
+  max-height: 80vh;
+  padding: 20px;
 }
