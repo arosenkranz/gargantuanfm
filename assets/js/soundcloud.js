@@ -99,7 +99,7 @@ $(document).ready(function(){
     }
   });
 
-
+  $('.current-time').css('opacity', '0');
   function currentTime() {
     var song = document.querySelector('audio');
     var time = Math.floor(song.currentTime);
