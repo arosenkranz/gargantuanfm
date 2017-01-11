@@ -2,14 +2,15 @@
 const playlist_dict = {
   // "playlist name" : "playlist id",
   "North Lights": "PLYPNYHaAOM8ncN-jTgNY25aFAYeMOQl9C",
+  "Party Background": "PLmDOmgjgiHsg9L_50qUKKeTYa3CR33o9s",
 };
 var currentVideos; // array of video objects!
-var current_video_index = 0; // current index of the video
+var current_video_index = 1; // current index of the video
 
 // ------------------------------------------------------------------
 // 1. Given the playlist name --> get an array of the videos
 var base_url = "https://www.googleapis.com/youtube/v3/playlistItems";
-var playlist_id = "PLYPNYHaAOM8ncN-jTgNY25aFAYeMOQl9C";
+var playlist_id = "PLmDOmgjgiHsg9L_50qUKKeTYa3CR33o9s";
 /* this function
 * @param {string} playlistName - the name of the playlist that you want to play
 */
