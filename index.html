@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gargantuan.FM</title>
-  
+
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/foundation.css">
   <link rel="stylesheet" href="assets/css/app.css">
@@ -15,13 +15,19 @@
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 
-  
+
 </head>
 
 <body>
   <video id="backgroundVideo" poster="assets/images/static.gif" playsinline autoplay muted>
     <source type="video/mp4">
   </video>
+<!-- NEED TO ADJUST INTO FOUNDATION -->
+  <div class="playlist-btn-container">
+  <button class="button small" id="nextVideo">skip</button>
+  </div>
+<!-- End of help -->
+
   <div class="main-body">
     <div class="row logo">
       <div class="small-12 medium-10 small-centered columns text-center">
@@ -32,17 +38,17 @@
           <h1>Create A Channel</h1>
           <form class="submitSong" data-abide>
             <div class="input-wrapper">
-              <div class="alert callout" data-closable="slide-out-right" style="display:none"><p>Name is required and must be a string.</p> 
+              <div class="alert callout" data-closable="slide-out-right" style="display:none"><p>Name is required and must be a string.</p>
                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close><span aria-hidden="true">&times;</span></button>
               </div>
-              
+
               <input type="text" required pattern="[a-zA-Z]+" id="channel-name" placeholder="Channel Name"/>
             </div>
 
             <input type="text"  id="songName" placeholder="Enter A Song or Artist"/>
-            
-            <a class="search-submit button small float-left">Search for Song</a> 
-            
+
+            <a class="search-submit button small float-left">Search for Song</a>
+
             <div class="float-right">
             <button type="submit" class="channel-create button small">Finish Creating Channel</button>
             <button type="reset" class="reset button small">Reset Channel Info</button>
@@ -69,24 +75,24 @@
           </div>
         </div>
       <!-- Load tracks into here for now -->
-      
+
       </div>
-      
+
     </div>
 
     <div class="row" >
 
       <div class="small-10 small-centered small-up-1 medium-up-1 large-up-3 text-center channelList" data-equalizer>
       </div>
-  
+
     </div>
-  
+
     <div class="row expanded display-buttons">
       <button type="button" class="button small show-button" data-toggle="offCanvasBottom" data-text-swap="Open Player">Close Player</button>
       <button type="button" class="button small show-channels float-right">Hide Channels</button>
     </div>
 
-    <div class="off-canvas position-bottom expanded row is-open track-player" id="offCanvasBottom" data-off-canvas data-transition="overlap"> 
+    <div class="off-canvas position-bottom expanded row is-open track-player" id="offCanvasBottom" data-off-canvas data-transition="overlap">
       <div class="columns small-12 medium-4 music-information text-right">
           <div class="playlist-info"></div>
           <div class="song-info"></div>
@@ -117,7 +123,7 @@
     };
     firebase.initializeApp(config);
     var dataRef = firebase.database();
-    
+
 
     SC.initialize({
     client_id: '8761e61199b55df39ee27a92f2771aeb'
