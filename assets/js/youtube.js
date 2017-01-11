@@ -31,6 +31,11 @@ function createPlaylistButtons(){
 
 // Event listener function when the button gets selected
 function playListButtonListener(){
+  // 0. remove active-btn class to all buttons
+  // & add active-btn to selected button
+  // $(".playlist-btn").removeClass("active-btn");
+    $(".active-btn").removeClass("active-btn");
+    $(this).addClass("active-btn");
   // 1. get the playlist id of the button clicked
   var playlist_id = $(this).data("id");
   var playlist_title = $(this).data("playlist");
