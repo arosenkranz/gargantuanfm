@@ -72,6 +72,7 @@ function getVideos_fromPlaylist(playlist_id, playlist_title){
        key: API_KEY,
        part: "snippet",
        playlistId: playlist_id,
+       maxResults: 50,
      },
      dataType: 'json',
      type: 'GET',
@@ -136,8 +137,9 @@ function playVideo(url){
   // console.info(mp4_url);
   // $("source").attr("src", url);
   // $("video")[0].load();
-  $("video").attr("src", url);
-  $("video").load();
+  // var test = $("#backgroundVideo");
+  $("#backgroundVideo").attr("src", url);
+  // $("#backgroundVideo").load();
 }
 
 // ---------------------- END: YOUTUBE API -----------------------------------
