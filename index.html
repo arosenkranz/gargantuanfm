@@ -19,13 +19,14 @@
 </head>
 
 <body>
-    <!-- <video src="http://www.youtube.com/watch?v=06ufjbInYwo" >    </video> -->
-  
+  <video id="backgroundVideo" poster="assets/images/static.gif" playsinline autoplay muted>
+    <source type="video/mp4">
+  </video>
   <div class="main-body">
     <div class="row logo">
-      <div class="small-8 small-centered columns text-center">
+      <div class="small-12 medium-10 small-centered columns text-center">
         <img class="title" src="assets/images/gargantuan_logo.png" alt="gargantuan logo" />
-        <a class="button large" data-toggle="channel-modal">Add A Channel</a></p>
+        <a class="gargantuan-btn" data-toggle="channel-modal">Add A Channel</a></p>
 
         <div class="reveal small text-center" id="channel-modal" data-reveal data-close-on-click="false" data-animation-in="scale-in-up">
           <h1>Create A Channel</h1>
@@ -75,7 +76,7 @@
 
     <div class="row" >
 
-      <div class="small-8 small-centered small-up-2 medium-up-3 large-up-4 text-center channelList">
+      <div class="small-10 small-centered small-up-1 medium-up-1 large-up-3 text-center channelList" data-equalizer>
       </div>
   
     </div>
