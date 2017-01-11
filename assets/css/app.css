@@ -1,0 +1,6 @@
+/* Styling for playlist buttons*/
+.active-btn {
+  /*color: red;*/
+  font-weight: 600;
+  border: 2px solid red;
+}
