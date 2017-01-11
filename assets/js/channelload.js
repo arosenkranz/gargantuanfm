@@ -14,6 +14,7 @@
 
   // When a channel is clicked, 
   $(document).on('click','.channelButton', function(){
+    $('.current-time').css('opacity', '1');
     channelId = $(this).data('channel').trim();
     playlistName = "";
     artists = [];

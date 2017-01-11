@@ -19,11 +19,13 @@ video {
 }
 
 
-
-
 .logo {
   margin-top: 10vh;
 }
+.title {
+  margin-bottom:20px;
+}
+
 .track-player {
   height: 10vh;
   min-height: 125px;
