@@ -19,7 +19,9 @@
 </head>
 
 <body>
- 
+<!--     <video poster="assets/images/static.gif"></video>
+ --> 
+  <div class="main-body">
     <div class="row logo">
       <div class="small-8 small-centered columns text-center">
         <h1 class="title">Gargantuan.<small>fm</small></h1>
@@ -78,24 +80,30 @@
   
     </div>
   
-  <div class="row expanded display-buttons">
-    <button type="button" class="button large show-button" data-toggle="offCanvasBottom" data-text-swap="Open Player">Close Player</button>
-    <button type="button" class="button large show-channels float-right">Hide Channels</button>
-  </div>
-
-  <div class="off-canvas position-bottom expanded text-center row is-open track-player" id="offCanvasBottom" data-off-canvas data-transition="overlap" > 
-    <div class="row text-center">
-      <div class="song-info"></div>
-      <i id="play-pause" class="fi-pause"></i>  <span class="current-time"></span>
+    <div class="row expanded display-buttons">
+      <button type="button" class="button small show-button" data-toggle="offCanvasBottom" data-text-swap="Open Player">Close Player</button>
+      <button type="button" class="button small show-channels float-right">Hide Channels</button>
     </div>
-    <div id="audioControl">
-      <div id="prevButton"><i class="fi-previous"></i></div>
-      <audio class="demoTrack" controls autoplay="true"></audio>
-      
-      <div id="skipButton"><i class="fi-next"></i></div>
+
+    <div class="off-canvas position-bottom expanded row is-open track-player" id="offCanvasBottom" data-off-canvas data-transition="overlap" > 
+      <div class="columns small-12 medium-4 text-right">
+          <div class="playlist-info"></div>
+          <div class="song-info"></div>
+          <div class="current-time"></div>
+          <audio class="demoTrack"  autoplay="true"></audio>
+      </div>
+      <div class="columns small-12 medium-4 text-center">
+        <div id="audioControl">
+          <i id="prevButton" class="fi-previous"></i>
+          <i id="play-pause" class="fi-pause"></i>
+          <i id="skipButton" class="fi-next"></i>
+        </div>
+      </div>
+      <div class="columns small-12 medium-4">
+        &nbsp;
+      </div>
     </div>
   </div>
-
   <script>
     // Initialize Firebase
     var config = {

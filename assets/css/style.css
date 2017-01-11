@@ -8,25 +8,36 @@ audio{
 
 }
 
+video {
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  position:fixed;
+  min-height: 100%;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
+
+
 .logo {
   margin-top: 10vh;
 }
 .track-player {
   height: 10vh;
-  min-height: 150px;
+  min-height: 125px;
 }
 
-.show-button {
+
+.display-buttons {
   position: fixed;
   margin: auto;
   bottom: 15vh;
 }
 
 .show-channels {
-  position: fixed;
-  margin: auto;
-  bottom: 15vh;
-  right: 0;
+  float: right;
 }
 
 .js-off-canvas-overlay {
@@ -35,25 +46,17 @@ audio{
 
 
 #audioControl{
-  display: inline-block;
-
+  display: block;
 }
 
-#prevButton{
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: white;
-  padding: 2px;
-  float: left;
-  margin: 5px;
-
+#audioControl i {
+  font-size: 75px;
+  line-height: 110px;
+  margin: 10px;
+  padding: 10px;
 }
 
-#skipButton{
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: white;
-  padding: 2px;
-  float: left;
-  margin: 5px;
+#channel-modal {
+  max-height: 80vh;
+  padding: 20px;
 }

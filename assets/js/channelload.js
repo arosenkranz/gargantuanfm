@@ -3,6 +3,7 @@
   var playlist = [];
   var artists = [];
   var trackNumber;
+  var playlistName;
 
   dataRef.ref('channels').on('child_added', function(childSnapshot){
     // console.log(childSnapshot.val());
@@ -14,6 +15,7 @@
   // When a channel is clicked, 
   $(document).on('click','.channelButton', function(){
     channelId = $(this).data('channel').trim();
+    playlistName = "";
     artists = [];
     playlist = [];
     trackNumber = 0;
@@ -25,11 +27,11 @@
   // Pulls the selected channel's info and passes it into our audio element 
   function loadChannel() {
     dataRef.ref('channels/' + channelId).once('value').then(function(snapshot){
-
+      playlistName = snapshot.val().channelName;
       //pulls selected channel's tracks 
       var channel = snapshot.val();
       var tracks = channel['tracks'];
-
+      console.log(playlistName);
       console.log(channel);
       console.log(tracks);
 
@@ -48,6 +50,7 @@
         var trackUrl = playlist[trackNumber];
         var songInfo = artists[trackNumber];
         $('.song-info').html(songInfo);
+        $('.playlist-info').html('NOW PLAYING: '+ playlistName);
 
         if (trackNumber < playlist.length) {
 
