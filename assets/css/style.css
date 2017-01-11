@@ -33,6 +33,10 @@ video {
   bottom: 15vh;
 }
 
+.show-channels {
+  float: right;
+}
+
 .js-off-canvas-overlay {
   display: none !important;
 }

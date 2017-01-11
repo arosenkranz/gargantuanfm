@@ -50,7 +50,7 @@
         var trackUrl = playlist[trackNumber];
         var songInfo = artists[trackNumber];
         $('.song-info').html(songInfo);
-        $('.playlist-info').html('NOW PLAYING<br/>'+ playlistName);
+        $('.playlist-info').html('NOW PLAYING: '+ playlistName);
 
         if (trackNumber < playlist.length) {
 
