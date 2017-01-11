@@ -22,11 +22,6 @@
   <video id="backgroundVideo" poster="assets/images/static.gif" playsinline autoplay muted>
     <source type="video/mp4">
   </video>
-<!-- NEED TO ADJUST INTO FOUNDATION -->
-  <div class="playlist-btn-container">
-  <button class="button small" id="nextVideo">skip</button>
-  </div>
-<!-- End of help -->
 
   <div class="main-body">
     <div class="row logo">
@@ -82,7 +77,7 @@
 
     <div class="row" >
 
-      <div class="small-10 small-centered small-up-1 medium-up-1 large-up-3 text-center channelList" data-equalizer>
+      <div class="small-12 medium-8 small-centered small-up-1 medium-up-1 large-up-3 text-center channelList" data-equalizer>
       </div>
 
     </div>
@@ -107,9 +102,15 @@
         <div class="current-time"></div>
 
       </div>
-      <div class="columns small-12 medium-4">
-        &nbsp;
-      </div>
+      <div class="columns small-12 medium-4 music-information text-left">
+        <div class="video-info"></div>
+        <div class="playlist-link">
+          <!-- NEED TO ADJUST INTO FOUNDATION -->
+          <div class="playlist-btn-container">
+            <button class="button small" id="nextVideo">skip</button>
+          </div>
+        </div>
+     </div>
     </div>
   </div>
   <script>

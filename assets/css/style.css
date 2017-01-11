@@ -31,7 +31,7 @@ video{
 }
 
 .logo {
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 .title {
   margin-bottom:20px;
@@ -39,7 +39,7 @@ video{
   -webkit-filter: drop-shadow(8px 8px 20px lime);
   filter: drop-shadow(8px 8px 20px lime);
   animation: ease-in-out;
-  animation-duration: 1s
+  animation-duration: 1s;
 }
 .title:hover {
   opacity: .7;
@@ -54,6 +54,10 @@ video{
   background-position: center;
   font-weight: 700;
   font-size: 26px;
+}
+
+.channelList {
+  padding-bottom: 200px;
 }
 
 .channelButton {
