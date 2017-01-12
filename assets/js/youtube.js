@@ -39,6 +39,8 @@ function playListButtonListener(){
     $(this).addClass("active-btn");
     $(".channel-toggle").trigger("click");
     $('.video-info').html('NOW WATCHING: ' + $(this).html());
+  // 0.5) reset the currentVideoIndex to zero & empty the array;
+  currentVideoIndex = 0;
   // 1. get the playlist id of the button clicked
   var playlist_id = $(this).data("id");
   var playlist_title = $(this).data("playlist");
@@ -53,7 +55,7 @@ function playNext(){
   // console.log(currentVideoIndex);
   currentVideoIndex ++;
 
-  if (currentVideoIndex == videos_array.length){
+  if (currentVideoIndex >= videos_array.length){
     currentVideoIndex = 0;
   };
 
@@ -127,7 +129,7 @@ function getMp4file(videoID){
         console.warn(videoID);
         // *PLAY NEXT VIDEO;
         currentVideoIndex ++;
-        if (currentVideoIndex == videos_array.length){
+        if (currentVideoIndex >= videos_array.length){
           currentVideoIndex = 0;
         };
         getMp4file(videos_array[currentVideoIndex]["id"]);
