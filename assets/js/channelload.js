@@ -4,31 +4,24 @@
   var artists = [];
   var trackNumber;
   var playlistName;
-  var audio = document.querySelector('audio');
 
   dataRef.ref('channels').on('child_added', function(childSnapshot){
     // console.log(childSnapshot.val());
-    $('.channelList').prepend('<div class="column column-block channelButton" data-equalizer-watch data-channel="' + childSnapshot.key + '">' + childSnapshot.val().channelName + '</div>');
+    $('.channelList').prepend('<div class="column column-block"><a class="button large success channelButton" data-channel="' + childSnapshot.key + '">' + childSnapshot.val().channelName + '</a></div>');
   }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);
   });
 
   // When a channel is clicked, 
   $(document).on('click','.channelButton', function(){
-    audio.pause();
     $('.current-time').css('opacity', '1');
-    $('.logo').animate({opacity: '0'}, 'slow');
-    $('.channelList').animate({opacity: '0'}, 'slow');
-    $('.show-channels').html('Show Channels');
-    $('.track-player').addClass('is-open');
-    $('.display-buttons').animate({bottom: '15vh'}, 'fast')
     channelId = $(this).data('channel').trim();
     playlistName = "";
     artists = [];
     playlist = [];
     trackNumber = 0;
     console.log(channelId);
-    setTimeout(loadChannel,1000);
+    loadChannel();
 
   });
 
@@ -59,7 +52,7 @@
         var songInfo = artists[trackNumber];
         $('.song-info').html(songInfo);
         $('.playlist-info').html('NOW PLAYING: '+ playlistName);
-        $('#play-pause').removeClass('fi-play').addClass('fi-pause');
+
         if (trackNumber < playlist.length) {
 
           $('audio').attr("src", trackUrl + "?client_id=8761e61199b55df39ee27a92f2771aeb");
@@ -96,7 +89,7 @@
       var prevSong = debounce(function(){
         if (trackNumber > 0){
           trackNumber--;
-          setTimeout(playTracks,1000);
+          playTracks();
         } else{
           replay();
         }
@@ -106,28 +99,26 @@
 
        //function to play next song
       var nextSong = debounce(function(){
-        audio.pause();
         trackNumber++;
-        setTimeout(playTracks,1000);
+        playTracks();
       }, 250);
 
       window.addEventListener('resize', nextSong);
 
       //replays playlist
       function replay() {
-        audio.pause();
         trackNumber = 0;
-        setTimeout(playTracks,1000);
+        playTracks();
       };
 
       //plays previous track when prevButton clicked
       $(document).on('click','#prevButton', function(){
-        setTimeout(prevSong, 1500);
+        prevSong();
       });
 
       //plays next track when skipButton clicked
       $(document).on('click','#skipButton', function(){
-        setTimeout(nextSong, 1500);
+        nextSong();
       });
         
     })
