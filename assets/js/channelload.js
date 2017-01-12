@@ -79,13 +79,13 @@ $(document).ready(function(){
         
       //function to play previous song
       function prevSong(){
+        audio.pause();
         if (trackNumber > 0){
-          audio.pause();
           trackNumber--;
           console.log(trackNumber);
           setTimeout(playTracks,1000);
         } else{
-          replay();
+          setTimeout(replay, 1000);
         }
       } 
 
@@ -93,8 +93,12 @@ $(document).ready(function(){
       function nextSong(){
         audio.pause();
         trackNumber++;
-        console.log(trackNumber);
-        setTimeout(playTracks,1000);
+        if (trackNumber < playlist.length){
+          console.log(trackNumber);
+          setTimeout(playTracks,1000);
+        } else {
+          setTimeout(replay, 1000);
+        }
       }
      
       //replays playlist
