@@ -11,7 +11,9 @@ const playlist_dict = {
   "80's Commercials": "PLC3458763E3A3C5A2",
   "90's Commercials": "PL0E12D3DB9229B41D",
   "Surf's Up, Brah": "PL99DENBqtCWMFvtTrhz23E4t7HeAmXFsx",
-
+  "Aquarium": "PLYPNYHaAOM8nigxkVQuNXiFiMqjK1TtTI",
+  "Night Sky": "PLYPNYHaAOM8nt2VItdWuFwyDwPsgNeNp4",
+  "GoPro": "PLYPNYHaAOM8k7bRf00K5wLf72mnTttDS4",
 };
 var videos_array; // array of video objects!
 var currentVideoIndex = 0; // current index of the video
