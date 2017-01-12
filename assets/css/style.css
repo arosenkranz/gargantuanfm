@@ -150,7 +150,7 @@ video{
   height: 12vh;
   min-height: 140px;
   background: rgba(255,255,255,0.3);
-  border-top:4px solid black;
+  border-top:4px solid #FF00FF;
   text-shadow: 0 0 10px #FF00FF;
   overflow: visible;
 }
@@ -200,6 +200,10 @@ video{
 
 .js-off-canvas-overlay {
   display: none !important;
+}
+
+.credits {
+  color: #fff;
 }
 
 
