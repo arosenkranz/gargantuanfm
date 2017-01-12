@@ -120,11 +120,11 @@ $(document).ready(function(){
   $(".show-button").on("click", function() {
     if ($('.show-button').html() === "Close Player"){
       $('.show-button').html('Open Player');
-      $('.display-buttons').animate({bottom: '1vh'}, 'fast')
+      $('.display-buttons').animate({bottom: '1.2vh'}, 'fast')
     }
     else if ($('.show-button').html() === "Open Player") {
       $('.show-button').html('Close Player');
-      $('.display-buttons').animate({bottom: '15vh'}, 'fast')
+      $('.display-buttons').animate({bottom: '20vh'}, 'fast')
     }
   });
 

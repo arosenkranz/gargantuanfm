@@ -22,7 +22,7 @@
     $('.show-button').html('Close Player');
     $('.logo').addClass('logo-small');
     $('.track-player').addClass('is-open');
-    $('.display-buttons').animate({bottom: '15vh'}, 'fast')
+    $('.display-buttons').animate({bottom: '20vh'}, 'fast')
     channelId = $(this).data('channel').trim();
     playlistName = "";
     artists = [];
@@ -116,7 +116,7 @@
       });
         
     })
-    
+
   };
   
 
