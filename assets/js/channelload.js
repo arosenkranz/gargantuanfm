@@ -46,7 +46,7 @@
 
 
       //pushes streaming urls into an array
-      for(i = 0; i < tracks.length; i++){
+      for(var i = 0; i < tracks.length; i++){
         artists.push(tracks[i].artist + ' - ' + tracks[i].trackName);
         playlist.push(tracks[i].url);
       };
@@ -60,6 +60,7 @@
         var songInfo = artists[trackNumber];
         $('.song-info').html(songInfo);
         $('.playlist-info').html('NOW PLAYING: '+ playlistName);
+        $(document).prop('title', playlistName + ' // Gargantuan.FM')
         $('#play-pause').removeClass('fi-play').addClass('fi-pause');
         if (trackNumber < playlist.length) {
 

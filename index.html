@@ -28,7 +28,7 @@
     <div class="row logo">
       <div class="small-12 medium-10 small-centered columns text-center">
         <img class="title" src="assets/images/gargantuan_logo.png" alt="gargantuan logo" />
-        <a class="gargantuan-btn" data-toggle="channel-modal">Add A Channel</a></p>
+        <button class="gargantuan-btn" data-toggle="channel-modal">Add A Channel</button>
 
         <div class="reveal small text-center" id="channel-modal" data-reveal data-close-on-click="false" data-animation-in="scale-in-up">
           <h1>Create A Channel</h1>
@@ -39,15 +39,16 @@
               </div>
 
               <input type="text" required pattern="[a-zA-Z]+" id="channel-name" placeholder="Channel Name"/>
+
             </div>
 
             <input type="text"  id="songName" placeholder="Enter A Song or Artist"/>
 
-            <a class="search-submit button small float-left">Search for Song</a>
+            <button class="search-submit button small float-left">Search for Song</button>
 
             <div class="float-right">
-            <button type="submit" class="channel-create button small">Finish Creating Channel</button>
-            <button type="reset" class="reset button small">Reset Channel Info</button>
+              <button type="submit" class="channel-create button small">Finish Creating Channel</button>
+              <button type="reset" class="reset button small">Reset Channel Info</button>
             </div>
 
           </form>
@@ -70,17 +71,12 @@
             </div>
           </div>
         </div>
-      <!-- Load tracks into here for now -->
-
       </div>
-
     </div>
-
-    <div class="row" >
-
-      <div class="small-12 medium-8 small-centered small-up-1 medium-up-1 large-up-3 text-center channelList" data-equalizer>
-      </div>
-
+    
+    <!-- Channel List Area -->
+    <div class="row">
+      <div class="small-12 medium-8 small-centered small-up-1 medium-up-1 large-up-3 text-center channelList" data-equalizer></div>
     </div>
 
     <div class="row expanded display-buttons">
