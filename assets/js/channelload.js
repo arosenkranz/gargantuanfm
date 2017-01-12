@@ -1,10 +1,12 @@
+$(document).ready(function(){
 
-   var channelId;
+  var channelId;
   var playlist = [];
   var artists = [];
   var trackNumber;
   var playlistName;
   var audio = document.querySelector('audio');
+  var timeout;
 
   dataRef.ref('channels').on('child_added', function(childSnapshot){
     // console.log(childSnapshot.val());
@@ -76,48 +78,35 @@
 
       playTracks();
 
-      //keeps same function from running before previous call is finished
-      function debounce(func, wait, immediate) {
-        var timeout;
-        return function() {
-          var context = this, args = arguments;
-          var later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-          };
-          var callNow = immediate && !timeout;
-          clearTimeout(timeout);
-          timeout = setTimeout(later, wait);
-          if (callNow) func.apply(context, args);
-        };
-      };
+
         
       //function to play previous song
-      var prevSong = debounce(function(){
+      function prevSong(){
         if (trackNumber > 0){
+          clearTimeout(timeout);
+          audio.pause();
           trackNumber--;
-          setTimeout(playTracks,1000);
+          timeout = setTimeout(playTracks,1000);
         } else{
           replay();
         }
-      }, 250);
-
-      window.addEventListener('resize', prevSong);   
+      } 
 
        //function to play next song
-      var nextSong = debounce(function(){
+      function nextSong(){
+        clearTimeout(timeout);
         audio.pause();
         trackNumber++;
-        setTimeout(playTracks,1000);
-      }, 250);
-
-      window.addEventListener('resize', nextSong);
-
+        console.log(trackNumber);
+        timeout = setTimeout(playTracks,1000);
+      }
+     
       //replays playlist
       function replay() {
+        clearTimeout(timeout);
         audio.pause();
         trackNumber = 0;
-        setTimeout(playTracks,1000);
+        timeout = setTimeout(playTracks,1000);
       };
 
       //plays previous track when prevButton clicked
@@ -132,4 +121,6 @@
         
     })
   };
+
+});
   
