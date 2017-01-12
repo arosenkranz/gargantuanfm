@@ -38,9 +38,14 @@ function playListButtonListener(){
     $(".active-btn").removeClass("active-btn");
     $(this).addClass("active-btn");
     $(".channel-toggle").trigger("click");
-    $('.video-info').html('NOW WATCHING: ' + $(this).html());
+    // console.info(this);
+    // debugger;
   // 0.5) reset the currentVideoIndex to zero & empty the array;
   currentVideoIndex = 0;
+  //0.75)Immediately remove the current src file --> so static plays
+  // $("#backgroundVideo").removeAttr("src");
+  $("#backgroundVideo").removeAttr("autoplay");
+  document.querySelector("#backgroundVideo").load();
   // 1. get the playlist id of the button clicked
   var playlist_id = $(this).data("id");
   var playlist_title = $(this).data("playlist");
@@ -51,6 +56,13 @@ function playListButtonListener(){
 
 // Event Listener - when video ends
 function playNext(){
+  // 0. Immediately remove the current src file --> so static plays
+    // $("#backgroundVideo").removeAttr("src");
+    // document.querySelector("#backgroundVideo").load();
+    $("#backgroundVideo").removeAttr("autoplay");
+    document.querySelector("#backgroundVideo").load();
+    // debugger;
+    // debugger;
   // console.log(this);
   // console.log(currentVideoIndex);
   currentVideoIndex ++;
@@ -144,12 +156,29 @@ function getMp4file(videoID){
 
 // ----------- #3 playVideo()----------
 function playVideo(url){
-  // console.info(mp4_url);
-  // $("source").attr("src", url);
-  // $("video")[0].load();
-  // var test = $("#backgroundVideo");
+  // change the video src to load the new video
   $("#backgroundVideo").attr("src", url);
-  // $("#backgroundVideo").load();
+  // turn autoplay back on
+  $("#backgroundVideo").prop("autoplay", true);
+  // debugger;
+  document.querySelector("#backgroundVideo").load();
+  var video = videos_array[currentVideoIndex];
+  var current_playlist = video["playlist"];
+  // DEVELOPMENT - testing code below:
+  console.info("Current Video Information");
+  console.info(video);
+  console.info("--------------------------");
+  // update the video info & highlight playlist
+  $('.video-info').html('NOW WATCHING: ' + video.title);
+  $(".active-btn").removeClass("active-btn");
+  // Get all the playlist buttons & check which one has a matching name
+  var playlist_btn_array = document.querySelectorAll(".playlist-btn");
+  Object.keys(playlist_btn_array).forEach(function(index){
+    if ($(playlist_btn_array[index]).data("playlist") == current_playlist){
+      // console.log(playlist_btn_array[index]);
+      $(playlist_btn_array[index]).addClass("active-btn");
+    }
+  });
 }
 
 // ---------------------- END: YOUTUBE API -----------------------------------
