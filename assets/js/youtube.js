@@ -44,6 +44,8 @@ function playListButtonListener(){
   currentVideoIndex = 0;
   //0.75)Immediately remove the current src file --> so static plays
   // $("#backgroundVideo").removeAttr("src");
+  $("#backgroundVideo").removeAttr("autoplay");
+  document.querySelector("#backgroundVideo").load();
   // 1. get the playlist id of the button clicked
   var playlist_id = $(this).data("id");
   var playlist_title = $(this).data("playlist");
@@ -56,8 +58,9 @@ function playListButtonListener(){
 function playNext(){
   // 0. Immediately remove the current src file --> so static plays
     // $("#backgroundVideo").removeAttr("src");
-    document.querySelector("#backgroundVideo").load();
+    // document.querySelector("#backgroundVideo").load();
     $("#backgroundVideo").removeAttr("autoplay");
+    document.querySelector("#backgroundVideo").load();
     // debugger;
     // debugger;
   // console.log(this);
@@ -156,7 +159,7 @@ function playVideo(url){
   // change the video src to load the new video
   $("#backgroundVideo").attr("src", url);
   // turn autoplay back on
-  $("#backgroundVideo").attr("autoplay", true);
+  $("#backgroundVideo").prop("autoplay", true);
   // debugger;
   document.querySelector("#backgroundVideo").load();
   var video = videos_array[currentVideoIndex];
