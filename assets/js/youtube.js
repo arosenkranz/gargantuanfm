@@ -11,7 +11,9 @@ const playlist_dict = {
   "80's Commercials": "PLC3458763E3A3C5A2",
   "90's Commercials": "PL0E12D3DB9229B41D",
   "Surf's Up, Brah": "PL99DENBqtCWMFvtTrhz23E4t7HeAmXFsx",
-
+  "Aquarium": "PLYPNYHaAOM8nigxkVQuNXiFiMqjK1TtTI",
+  "Night Sky": "PLYPNYHaAOM8nt2VItdWuFwyDwPsgNeNp4",
+  "GoPro": "PLYPNYHaAOM8k7bRf00K5wLf72mnTttDS4",
 };
 var videos_array; // array of video objects!
 var currentVideoIndex = 0; // current index of the video
@@ -38,53 +40,43 @@ function createPlaylistButtons(){
 
 // Event listener function when the button gets selected
 function playListButtonListener(){
-  // 0. remove active-btn class to all buttons
+  // Disable the skip button & change video channel button
+  $(".playlist-btn-container > button").prop("disabled", true);
+  // remove active-btn class to all buttons
   // & add active-btn to selected button
-  // $(".playlist-btn").removeClass("active-btn");
-    $(".active-btn").removeClass("active-btn");
-    $(this).addClass("active-btn");
-    $(".channel-toggle").trigger("click");
-    // console.info(this);
-    // debugger;
-  // 0.5) reset the currentVideoIndex to zero & empty the array;
+  $(".active-btn").removeClass("active-btn");
+  $(this).addClass("active-btn");
+  $(".channel-toggle").trigger("click");
+
+  // reset the currentVideoIndex to zero & empty the array;
   currentVideoIndex = 0;
-  //0.75)Immediately remove the current src file --> so static plays
-  // $("#backgroundVideo").removeAttr("src");
+  // Display the static.gif
   $("#backgroundVideo").removeAttr("autoplay");
   document.querySelector("#backgroundVideo").load();
-  // 1. get the playlist id of the button clicked
+  // get the playlist id of the button clicked
   var playlist_id = $(this).data("id");
   var playlist_title = $(this).data("playlist");
-  // console.log(playlist_id);
-  // 2. Get the videos from the playlist
+
+  // Get the videos from the playlist
   getVideos_fromPlaylist(playlist_id, playlist_title);
 }
 
 // Event Listener - when video ends
 function playNext(){
-  // 0. Immediately remove the current src file --> so static plays
-    // $("#backgroundVideo").removeAttr("src");
-    // document.querySelector("#backgroundVideo").load();
-    $("#backgroundVideo").removeAttr("autoplay");
-    document.querySelector("#backgroundVideo").load();
-    // debugger;
-    // debugger;
-  // console.log(this);
-  // console.log(currentVideoIndex);
+  // Disable the skip button & change video channel button
+  $(".playlist-btn-container > button").prop("disabled", true);
+  // Display the static.gif
+  $("#backgroundVideo").removeAttr("autoplay");
+  document.querySelector("#backgroundVideo").load();
+  // Increment currentVideoIndex
   currentVideoIndex ++;
-
   if (currentVideoIndex >= videos_array.length){
     currentVideoIndex = 0;
   };
-
+  // Get the next videoId --> inorder to get the mp4 file format
   var video = videos_array[currentVideoIndex];
   var videoId = video.id;
-  // console.log(videoId);
   getMp4file(videoId);
-  // update the src of the video element
-  // var nextVideoId =
-  // $(".videoSource").attr("src", );
-  // $("video")[0].load(); // need to load the video
 }
 
 // ----------------------START: YOUTUBE API -----------------------------------
@@ -185,6 +177,10 @@ function playVideo(url){
       $(playlist_btn_array[index]).addClass("active-btn");
     }
   });
+  // Re-active the skip button & change playlist, after one second
+  window.setTimeout(function(){
+    $(".playlist-btn-container > button").prop("disabled", false);
+  }, 1000);
 }
 
 // ---------------------- END: YOUTUBE API -----------------------------------
