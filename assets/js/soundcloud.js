@@ -5,7 +5,9 @@ $(document).ready(function(){
   var query = '';
   var trackList = [];
   var song = document.querySelector('audio');
-  console.log(song);
+  var channelNameCheck = [];
+  
+
 
   $(document).on('click','.search-submit', function(e){
     e.preventDefault();
@@ -32,17 +34,17 @@ $(document).ready(function(){
   function addTrack() {
     SC.get('/tracks/' + track).then(function(player){
       
-      console.log(track);
       trackList.push({
         id : player.id,
         trackName : player.title,
         url : player.stream_url,
         artist : player.user.username
       });
+
       if (trackList.length === 1) {
         $('.picked-songs').empty();
       }
-      $('.picked-songs').append('<li class="column column-block"><button class="button small success picked-song" data-value="' + player.id + '">'+ player.title + '</button></li>');
+      $('.picked-songs').append('<li class="column column-block"><button class="button small picked-song" data-value="' + player.id + '">'+ player.title + '</button></li>');
     })
     $('#songName').attr('placeholder','Search for another song or artist!')
   };
@@ -64,22 +66,31 @@ $(document).ready(function(){
   $(document).on('click','.channel-create', function(e){
     e.preventDefault();
     var channelName = $('#channel-name').val().trim();
-
-    // Make sure user enters both a channel name and tracklist
-    if (channelName != '' && channelName != $('.channelButton').find(channelName).html() && trackList.length > 0) {
-      dataRef.ref().child('channels').push({
-        channelName : channelName,
-        tracks : trackList
-      })
-      trackList = [];
-      $('#channel-name').val('');
-      $('#songName').val('');
-      $('.picked-songs').html('<h3>Congrats on your new Gargantuan station!</h3>');
-      $('.search-list').html('Hit Search and Then Look Here!');
-    }
-    else {
-      $('.callout').css('display', 'block');
-    }
+    
+    dataRef.ref().child(channelName).once('value', function(snapshot) {
+    var exists = (snapshot.val() !== null);
+    
+      if (exists){
+        // Make sure user enters both a channel name and tracklist
+        if (channelName != '' && trackList.length > 0 ) {
+          dataRef.ref().child('channels').push({
+            channelName : channelName,
+            tracks : trackList
+          })
+          trackList = [];
+          $('#channel-name').val('');
+          $('#songName').val('');
+          $('.picked-songs').html('<h3>Congrats on your new Gargantuan station!</h3>');
+          $('.search-list').html('Hit Search and Then Look Here!');
+        }
+        else {
+          $('.callout').css('display', 'block');
+        }
+      }
+      else {
+        $('.callout').css('display', 'block');
+      }
+    });
   });
 
   // Reset button

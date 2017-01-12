@@ -41,12 +41,12 @@ function createPlaylistButtons(){
 // Event listener function when the button gets selected
 function playListButtonListener(){
   // Disable the skip button & change video channel button
+  $(".channel-toggle").trigger("click");
   $(".playlist-btn-container > button").prop("disabled", true);
   // remove active-btn class to all buttons
   // & add active-btn to selected button
   $(".active-btn").removeClass("active-btn");
   $(this).addClass("active-btn");
-  $(".channel-toggle").trigger("click");
 
   // reset the currentVideoIndex to zero & empty the array;
   currentVideoIndex = 0;
