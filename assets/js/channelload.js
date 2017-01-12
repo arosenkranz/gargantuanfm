@@ -17,9 +17,10 @@
   $(document).on('click','.channelButton', function(){
     audio.pause();
     $('.current-time').css('opacity', '1');
-    $('.logo').animate({opacity: '0'}, 'slow');
     $('.channelList').animate({opacity: '0'}, 'slow');
     $('.show-channels').html('Show Channels');
+    $('.show-button').html('Close Player');
+    $('.logo').addClass('logo-small');
     $('.track-player').addClass('is-open');
     $('.display-buttons').animate({bottom: '15vh'}, 'fast')
     channelId = $(this).data('channel').trim();

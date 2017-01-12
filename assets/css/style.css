@@ -36,18 +36,37 @@ video{
 
 .logo {
   margin-top: 5vh;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 1s;
+  transition-property: all;
 }
 .title {
   margin-bottom:20px;
   opacity: 1;
   -webkit-filter: drop-shadow(8px 8px 20px #FF00FF);
   filter: drop-shadow(8px 8px 20px #FF00FF);
-  animation: ease-in-out;
-  animation-duration: 1s;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 1s;
+  transition-property: all;
+
 }
-.title:hover {
-  opacity: .7;
+
+.logo-small {
+  margin-top: 1vh;
 }
+
+.logo-small .title {
+  -webkit-transform: scale(.6);
+  -moz-transform: scale(.6);
+  transform: scale(.6);
+}
+
+.logo-small .gargantuan-btn {
+  opacity: 0;
+} 
+
 
 .search-submit, .channel-create, .reset {
   background: black;
@@ -72,13 +91,17 @@ video{
   background: url(../images/brush.png) no-repeat;
   -webkit-filter: drop-shadow(8px 8px 20px #FF00FF);
   filter: drop-shadow(8px 8px 20px #FF00FF);
-  display: block;
+  display: inline-block;
   padding: 38px;
   color: white;
   background-size: contain;
   background-position: center;
   font-weight: 700;
   font-size: 26px;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 1s;
+  transition-property: all;
 }
 
 .channelList {
@@ -87,7 +110,6 @@ video{
 
 .channelButton {
   background: url(../images/brush.png) no-repeat;
-  opacity: .8;
   color: white;
   background-size: contain;
   background-position: center;
@@ -159,6 +181,7 @@ video{
   line-height: 70px;
   margin: 10px;
   padding: 10px;
+  cursor: pointer;
 }
 
 #channel-modal {
@@ -166,6 +189,13 @@ video{
   padding: 20px;
   background: rgba(255,255,255,0.9);
   border: 5px solid black;
-  -webkit-filter: drop-shadow(8px 8px 20px #FF00FF);
-  filter: drop-shadow(8px 8px 20px #FF00FF);
+  -webkit-filter: drop-shadow(0px 0px 20px #FF00FF);
+  filter: drop-shadow(0px 0px 20px #FF00FF);
+}
+
+#channel-menu {
+  padding:0;
+  margin:2px solid black;
+  -webkit-filter: drop-shadow(0px 0px 20px #FF00FF);
+  filter: drop-shadow(0px 0px 20px #FF00FF);
 }

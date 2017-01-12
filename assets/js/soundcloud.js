@@ -124,12 +124,12 @@ $(document).ready(function(){
   $(".show-channels").on("click", function() {
     if ($('.show-channels').html() === 'Hide Channels'){
       $('.show-channels').html('Show Channels');
-      $('.logo').animate({opacity: '0'}, 'slow');
+      $('.logo').addClass('logo-small');
       $('.channelList').animate({opacity: '0'}, 'slow');
     }
     else if ($('.show-channels').html() === 'Show Channels') {
       $('.show-channels').html('Hide Channels');
-      $('.logo').animate({opacity: '1'}, 'slow');
+      $('.logo').removeClass('logo-small');
       $('.channelList').animate({opacity: '1'}, 'slow');
 
     }
