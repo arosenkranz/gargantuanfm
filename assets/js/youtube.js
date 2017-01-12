@@ -15,7 +15,7 @@ var currentVideoIndex = 0; // current index of the video
 // & create buttons of the playlist names
 function createPlaylistButtons(){
   // 1. reference to where buttons will be appended to:
-  var appendTarget = $(".playlist-btn-container"); // *** CHANGE THIS TO REFERNCE where we will append to
+  var appendTarget = $("#channel-menu"); // *** CHANGE THIS TO REFERNCE where we will append to
   // 2. for each key-value pair in the playlist dictionary, create a button
   Object.keys(playlist_dict).map(function(key){
     // console.log(`${key}: ${playlist_dict[key]}`);
@@ -37,6 +37,7 @@ function playListButtonListener(){
   // $(".playlist-btn").removeClass("active-btn");
     $(".active-btn").removeClass("active-btn");
     $(this).addClass("active-btn");
+    $(".channel-toggle").trigger("click");
     $('.video-info').html('NOW WATCHING: ' + $(this).html());
   // 1. get the playlist id of the button clicked
   var playlist_id = $(this).data("id");

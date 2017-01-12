@@ -110,6 +110,7 @@ video{
 
 .off-canvas.is-transition-overlap.is-open {
   box-shadow: none;
+  overflow: visible;
 }
 
 .music-information {

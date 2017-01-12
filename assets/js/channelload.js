@@ -1,4 +1,3 @@
-$(document).ready(function(){
 
   var channelId;
   var playlist = [];
@@ -77,31 +76,43 @@ $(document).ready(function(){
 
       playTracks();
 
+      //keeps same function from running before previous call is finished
+      function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+          var context = this, args = arguments;
+          var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+          };
+          var callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+          if (callNow) func.apply(context, args);
+        };
+      };
         
       //function to play previous song
-      function prevSong(){
-        audio.pause();
+      var prevSong = debounce(function(){
         if (trackNumber > 0){
           trackNumber--;
-          console.log(trackNumber);
           setTimeout(playTracks,1000);
         } else{
-          setTimeout(replay, 1000);
+          replay();
         }
-      } 
+      }, 250);
+
+      window.addEventListener('resize', prevSong);   
 
        //function to play next song
-      function nextSong(){
+      var nextSong = debounce(function(){
         audio.pause();
         trackNumber++;
-        if (trackNumber < playlist.length){
-          console.log(trackNumber);
-          setTimeout(playTracks,1000);
-        } else {
-          setTimeout(replay, 1000);
-        }
-      }
-     
+        setTimeout(playTracks,1000);
+      }, 250);
+
+      window.addEventListener('resize', nextSong);
+
       //replays playlist
       function replay() {
         audio.pause();
@@ -121,6 +132,5 @@ $(document).ready(function(){
         
     })
   };
-
-});
   
+
