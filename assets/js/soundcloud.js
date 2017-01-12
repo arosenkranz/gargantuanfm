@@ -66,31 +66,22 @@ $(document).ready(function(){
   $(document).on('click','.channel-create', function(e){
     e.preventDefault();
     var channelName = $('#channel-name').val().trim();
-    
-    dataRef.ref().child(channelName).once('value', function(snapshot) {
-    var exists = (snapshot.val() !== null);
-    
-      if (exists){
-        // Make sure user enters both a channel name and tracklist
-        if (channelName != '' && trackList.length > 0 ) {
-          dataRef.ref().child('channels').push({
-            channelName : channelName,
-            tracks : trackList
-          })
-          trackList = [];
-          $('#channel-name').val('');
-          $('#songName').val('');
-          $('.picked-songs').html('<h3>Congrats on your new Gargantuan station!</h3>');
-          $('.search-list').html('Hit Search and Then Look Here!');
-        }
-        else {
-          $('.callout').css('display', 'block');
-        }
-      }
-      else {
-        $('.callout').css('display', 'block');
-      }
-    });
+
+    // Make sure user enters both a channel name and tracklist
+    if (channelName != '' && jQuery.inArray(channelName, channelNameCheck) === -1 && trackList.length > 0 ) {
+      dataRef.ref().child('channels').push({
+        channelName : channelName,
+        tracks : trackList
+      })
+      trackList = [];
+      $('#channel-name').val('');
+      $('#songName').val('');
+      $('.picked-songs').html('<h3>Congrats on your new Gargantuan station!</h3>');
+      $('.search-list').html('Hit Search and Then Look Here!');
+    }
+    else {
+      $('.callout').css('display', 'block');
+    }
   });
 
   // Reset button
