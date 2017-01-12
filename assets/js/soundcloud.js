@@ -18,7 +18,7 @@ $(document).ready(function(){
   function getUser() {
     SC.get('/tracks', {
        q: query,
-       limit: 30,
+       limit: 50,
        order: 'hotness'
     }).then(function(tracks) {
       for (var i = 0; i < tracks.length; i++) {
@@ -69,8 +69,8 @@ $(document).ready(function(){
         tracks : trackList
       })
       trackList = [];
-      $('.pickedSongs').html('<h3>Congrats on your new Gargantuan station!</h3>');
-      $('.search-list').empty();
+      $('.picked-songs').html('<h3>Congrats on your new Gargantuan station!</h3>');
+      $('.search-list').html('Hit Search and Then Look Here!');
     }
     else {
       $('.callout').css('display', 'block');
@@ -113,7 +113,7 @@ $(document).ready(function(){
   $(".show-button").on("click", function() {
     if ($('.show-button').html() === "Close Player"){
       $('.show-button').html('Open Player');
-      $('.display-buttons').animate({bottom: '0'}, 'fast')
+      $('.display-buttons').animate({bottom: '1vh'}, 'fast')
     }
     else if ($('.show-button').html() === "Open Player") {
       $('.show-button').html('Close Player');

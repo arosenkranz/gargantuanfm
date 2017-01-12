@@ -5,6 +5,7 @@ const playlist_dict = {
   "North Lights": "PLYPNYHaAOM8ncN-jTgNY25aFAYeMOQl9C",
   "Party Background": "PLmDOmgjgiHsg9L_50qUKKeTYa3CR33o9s",
   "test123": "PLYPNYHaAOM8l-LTJ3uhaLa-waAzXwfX_B",
+  "Skinemax (SFW)": "PL024F8B35E0A4B3D0",
 };
 var videos_array; // array of video objects!
 var currentVideoIndex = 0; // current index of the video
@@ -36,6 +37,7 @@ function playListButtonListener(){
   // $(".playlist-btn").removeClass("active-btn");
     $(".active-btn").removeClass("active-btn");
     $(this).addClass("active-btn");
+    $('.video-info').html('NOW WATCHING: ' + $(this).html());
   // 1. get the playlist id of the button clicked
   var playlist_id = $(this).data("id");
   var playlist_title = $(this).data("playlist");
@@ -156,6 +158,7 @@ $(document).ready(function(){
   createPlaylistButtons();
   // 2. event listener for playlist button
   $(document).on("click", ".playlist-btn", playListButtonListener);
+
 
   // 3. event listener for when video finished
   $("video").on("ended", playNext);
