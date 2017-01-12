@@ -11,16 +11,17 @@ $(document).ready(function(){
     e.preventDefault();
     $('.search-list').empty();
     query = $('#songName').val().trim();
-    getUser();
+    getSC();
   })
 
 // Query songs from SoundCloud
-  function getUser() {
+  function getSC() {
     SC.get('/tracks', {
        q: query,
        limit: 50,
        order: 'hotness'
     }).then(function(tracks) {
+      $('.search-list').empty();
       for (var i = 0; i < tracks.length; i++) {
         $('.search-list').append('<div class="column column-block" data-equalizer-watch><a class="button small song" data-value="' + tracks[i].id + '">' + tracks[i].user.username + " - " +  tracks[i].title + '</a></div>');
       }
@@ -38,7 +39,9 @@ $(document).ready(function(){
         url : player.stream_url,
         artist : player.user.username
       });
-
+      if (trackList.length === 1) {
+        $('.picked-songs').empty();
+      }
       $('.picked-songs').append('<li class="column column-block"><button class="button small success picked-song" data-value="' + player.id + '">'+ player.title + '</button></li>');
     })
     $('#songName').attr('placeholder','Search for another song or artist!')
