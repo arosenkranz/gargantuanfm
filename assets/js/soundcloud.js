@@ -66,12 +66,14 @@ $(document).ready(function(){
     var channelName = $('#channel-name').val().trim();
 
     // Make sure user enters both a channel name and tracklist
-    if (channelName != '' && trackList.length > 0) {
+    if (channelName != '' && channelName != $('.channelButton').find(channelName).html() && trackList.length > 0) {
       dataRef.ref().child('channels').push({
         channelName : channelName,
         tracks : trackList
       })
       trackList = [];
+      $('#channel-name').val('');
+      $('#songName').val('');
       $('.picked-songs').html('<h3>Congrats on your new Gargantuan station!</h3>');
       $('.search-list').html('Hit Search and Then Look Here!');
     }
