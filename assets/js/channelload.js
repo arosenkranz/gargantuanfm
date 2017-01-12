@@ -6,7 +6,6 @@ $(document).ready(function(){
   var trackNumber;
   var playlistName;
   var audio = document.querySelector('audio');
-  var timeout;
 
   dataRef.ref('channels').on('child_added', function(childSnapshot){
     // console.log(childSnapshot.val());
@@ -77,16 +76,14 @@ $(document).ready(function(){
 
 
       playTracks();
-
-
         
       //function to play previous song
       function prevSong(){
         if (trackNumber > 0){
-          clearTimeout(timeout);
           audio.pause();
           trackNumber--;
-          timeout = setTimeout(playTracks,1000);
+          console.log(trackNumber);
+          setTimeout(playTracks,1000);
         } else{
           replay();
         }
@@ -94,19 +91,17 @@ $(document).ready(function(){
 
        //function to play next song
       function nextSong(){
-        clearTimeout(timeout);
         audio.pause();
         trackNumber++;
         console.log(trackNumber);
-        timeout = setTimeout(playTracks,1000);
+        setTimeout(playTracks,1000);
       }
      
       //replays playlist
       function replay() {
-        clearTimeout(timeout);
         audio.pause();
         trackNumber = 0;
-        timeout = setTimeout(playTracks,1000);
+        setTimeout(playTracks,1000);
       };
 
       //plays previous track when prevButton clicked
