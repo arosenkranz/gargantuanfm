@@ -71,13 +71,14 @@
         } else {
           replay();
 
-        }
+        };
       };
 
 
       playTracks();
 
       };
+    };
         
       //function to play previous song
       function prevSong(){
@@ -86,7 +87,7 @@
           setTimeout(playTracks,1000);
         } else{
           replay();
-        }
+        };
       };
    
 
@@ -115,7 +116,7 @@
         setTimeout(nextSong, 1500);
       });
         
-    })
+    });
   };
   
 
