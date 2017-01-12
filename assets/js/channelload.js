@@ -17,7 +17,7 @@
   $(document).on('click','.channelButton', function(){
     audio.pause();
     $('.current-time').css('opacity', '1');
-    $('.channelList').animate({opacity: '0'}, 'slow');
+    $('.channelList').fadeOut('slow');
     $('.show-channels').html('Show Channels');
     $('.show-button').html('Close Player');
     $('.logo').addClass('logo-small');

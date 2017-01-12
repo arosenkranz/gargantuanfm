@@ -58,13 +58,13 @@ video{
 }
 
 .logo-small .title {
-  -webkit-transform: scale(.6);
-  -moz-transform: scale(.6);
-  transform: scale(.6);
+  -webkit-transform: scale(.7);
+  -moz-transform: scale(.7);
+  transform: scale(.7);
 }
 
 .logo-small .gargantuan-btn {
-  opacity: 0;
+  display: none;
 } 
 
 
@@ -128,11 +128,13 @@ video{
   height: 10vh;
   min-height: 125px;
   background: rgba(255,255,255,0.3);
+  text-shadow: 0 0 30px #00f9ff;
 }
 
 .off-canvas.is-transition-overlap.is-open {
   box-shadow: none;
   overflow: visible;
+  
 }
 
 .music-information {
