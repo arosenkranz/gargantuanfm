@@ -5,6 +5,10 @@ body {
   margin: 0;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Cabin', sans-serif;
+}
+
 li {
   list-style: none;
 }
@@ -31,22 +35,43 @@ video{
 }
 
 .logo {
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 .title {
   margin-bottom:20px;
   opacity: 1;
-  -webkit-filter: drop-shadow(8px 8px 20px lime);
-  filter: drop-shadow(8px 8px 20px lime);
+  -webkit-filter: drop-shadow(8px 8px 20px #FF00FF);
+  filter: drop-shadow(8px 8px 20px #FF00FF);
   animation: ease-in-out;
-  animation-duration: 1s
+  animation-duration: 1s;
 }
 .title:hover {
   opacity: .7;
 }
 
+.search-submit, .channel-create, .reset {
+  background: black;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+}
+
+.underline {
+  margin-top: 15px;
+  border-top: 1px dotted black;
+}
+
+.search-list .button {
+  background: black;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+}
+
 .gargantuan-btn {
   background: url(../images/brush.png) no-repeat;
+  -webkit-filter: drop-shadow(8px 8px 20px #FF00FF);
+  filter: drop-shadow(8px 8px 20px #FF00FF);
   display: block;
   padding: 38px;
   color: white;
@@ -54,6 +79,10 @@ video{
   background-position: center;
   font-weight: 700;
   font-size: 26px;
+}
+
+.channelList {
+  padding-bottom: 200px;
 }
 
 .channelButton {
@@ -68,8 +97,8 @@ video{
   justify-content: center;
   font-size: 27px;
   font-weight: 700;
-  -webkit-filter: drop-shadow(8px 8px 20px lime);
-  filter: drop-shadow(8px 8px 20px lime);
+  -webkit-filter: drop-shadow(8px 8px 20px #FF00FF);
+  filter: drop-shadow(8px 8px 20px #FF00FF);
   cursor: pointer;
 }
 
@@ -95,11 +124,23 @@ video{
 .display-buttons {
   position: fixed;
   margin: auto;
-  bottom: 15vh;
+  bottom: 1vh;
+}
+.display-buttons button {
+  background: black;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .show-channels {
   float: right;
+}
+
+.playlist-btn-container button{
+  background: black;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
 }
 
 .js-off-canvas-overlay {
@@ -122,4 +163,8 @@ video{
 #channel-modal {
   max-height: 80vh;
   padding: 20px;
+  background: rgba(255,255,255,0.9);
+  border: 5px solid black;
+  -webkit-filter: drop-shadow(8px 8px 20px #FF00FF);
+  filter: drop-shadow(8px 8px 20px #FF00FF);
 }

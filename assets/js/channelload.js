@@ -20,6 +20,8 @@
     $('.logo').animate({opacity: '0'}, 'slow');
     $('.channelList').animate({opacity: '0'}, 'slow');
     $('.show-channels').html('Show Channels');
+    $('.track-player').addClass('is-open');
+    $('.display-buttons').animate({bottom: '15vh'}, 'fast')
     channelId = $(this).data('channel').trim();
     playlistName = "";
     artists = [];

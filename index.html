@@ -7,9 +7,9 @@
 
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/foundation.css">
-  <link rel="stylesheet" href="assets/css/app.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/foundation-icons/foundation-icons.css">
+  <link rel="stylesheet" href="assets/css/app.css">
   <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
   <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
@@ -22,11 +22,6 @@
   <video id="backgroundVideo" poster="assets/images/static.gif" playsinline autoplay muted>
     <source type="video/mp4">
   </video>
-<!-- NEED TO ADJUST INTO FOUNDATION -->
-  <div class="playlist-btn-container">
-  <button class="button small" id="nextVideo">skip</button>
-  </div>
-<!-- End of help -->
 
   <div class="main-body">
     <div class="row logo">
@@ -63,14 +58,14 @@
           <div class="row">
             <div class="small-12 columns">
             <h2 class="underline">Songs On Channel</h2>
-              <ul class="small-up-2 medium-up-3 picked-songs"></ul>
+              <ul class="small-up-2 medium-up-3 picked-songs">No Songs Picked Yet.</ul>
             </div>
           </div>
           <div class="row ">
             <div class="small-12 columns">
               <h2 class="underline">Pick Your Song</h2>
 
-              <ul class="small-up-2 medium-up-3 search-list"></ul>
+              <ul class="small-up-2 medium-up-3 search-list">Hit Search and Then Look Here!</ul>
             </div>
           </div>
         </div>
@@ -82,17 +77,17 @@
 
     <div class="row" >
 
-      <div class="small-10 small-centered small-up-1 medium-up-1 large-up-3 text-center channelList" data-equalizer>
+      <div class="small-12 medium-8 small-centered small-up-1 medium-up-1 large-up-3 text-center channelList" data-equalizer>
       </div>
 
     </div>
 
     <div class="row expanded display-buttons">
-      <button type="button" class="button small show-button" data-toggle="offCanvasBottom" data-text-swap="Open Player">Close Player</button>
+      <button type="button" class="button small show-button" data-toggle="offCanvasBottom" data-text-swap="Close Player">Open Player</button>
       <button type="button" class="button small show-channels float-right">Hide Channels</button>
     </div>
 
-    <div class="off-canvas position-bottom expanded row is-open track-player" id="offCanvasBottom" data-off-canvas data-transition="overlap">
+    <div class="off-canvas position-bottom expanded row track-player" id="offCanvasBottom" data-off-canvas data-transition="overlap">
       <div class="columns small-12 medium-4 music-information text-right">
           <div class="playlist-info"></div>
           <div class="song-info"></div>
@@ -107,9 +102,15 @@
         <div class="current-time"></div>
 
       </div>
-      <div class="columns small-12 medium-4">
-        &nbsp;
-      </div>
+      <div class="columns small-12 medium-4 music-information text-left">
+        <div class="video-info"></div>
+        <div class="playlist-link">
+          <!-- NEED TO ADJUST INTO FOUNDATION -->
+          <div class="playlist-btn-container">
+            <button class="button small" id="nextVideo">skip</button>
+          </div>
+        </div>
+     </div>
     </div>
   </div>
   <script>

@@ -5,6 +5,7 @@ const playlist_dict = {
   "North Lights": "PLYPNYHaAOM8ncN-jTgNY25aFAYeMOQl9C",
   "Party Background": "PLmDOmgjgiHsg9L_50qUKKeTYa3CR33o9s",
   "test123": "PLYPNYHaAOM8l-LTJ3uhaLa-waAzXwfX_B",
+  "Skinemax (SFW)": "PL024F8B35E0A4B3D0",
 };
 var videos_array; // array of video objects!
 var currentVideoIndex = 0; // current index of the video
@@ -31,6 +32,12 @@ function createPlaylistButtons(){
 
 // Event listener function when the button gets selected
 function playListButtonListener(){
+  // 0. remove active-btn class to all buttons
+  // & add active-btn to selected button
+  // $(".playlist-btn").removeClass("active-btn");
+    $(".active-btn").removeClass("active-btn");
+    $(this).addClass("active-btn");
+    $('.video-info').html('NOW WATCHING: ' + $(this).html());
   // 1. get the playlist id of the button clicked
   var playlist_id = $(this).data("id");
   var playlist_title = $(this).data("playlist");
@@ -44,9 +51,11 @@ function playNext(){
   // console.log(this);
   // console.log(currentVideoIndex);
   currentVideoIndex ++;
+
   if (currentVideoIndex == videos_array.length){
     currentVideoIndex = 0;
   };
+
   var video = videos_array[currentVideoIndex];
   var videoId = video.id;
   // console.log(videoId);
@@ -70,6 +79,7 @@ function getVideos_fromPlaylist(playlist_id, playlist_title){
        key: API_KEY,
        part: "snippet",
        playlistId: playlist_id,
+       maxResults: 50,
      },
      dataType: 'json',
      type: 'GET',
@@ -132,8 +142,11 @@ function getMp4file(videoID){
 // ----------- #3 playVideo()----------
 function playVideo(url){
   // console.info(mp4_url);
-  $("source").attr("src", url);
-  $("video")[0].load();
+  // $("source").attr("src", url);
+  // $("video")[0].load();
+  // var test = $("#backgroundVideo");
+  $("#backgroundVideo").attr("src", url);
+  // $("#backgroundVideo").load();
 }
 
 // ---------------------- END: YOUTUBE API -----------------------------------
@@ -145,6 +158,7 @@ $(document).ready(function(){
   createPlaylistButtons();
   // 2. event listener for playlist button
   $(document).on("click", ".playlist-btn", playListButtonListener);
+
 
   // 3. event listener for when video finished
   $("video").on("ended", playNext);
