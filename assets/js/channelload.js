@@ -76,6 +76,7 @@ $(document).ready(function(){
 
 
       playTracks();
+
         
       //function to play previous song
       function prevSong(){
