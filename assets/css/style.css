@@ -3,7 +3,8 @@
 body {
   font-family: 'Cabin', sans-serif;
   margin: 0;
-  background: url('assets/images/static.gif') no-repeat cover;
+  background:transparent url('../images/static.gif') 0 0 fixed;
+  background-size: cover;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -32,6 +33,8 @@ video{
   transform: translateX(-50%) translateY(-50%);
   background-size: cover;
   transition: 1s opacity;
+  background:transparent url('../images/static.gif') 0 0 fixed;
+  background-size: cover;
 }
 
 a:focus {
