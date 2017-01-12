@@ -77,7 +77,6 @@
 
       playTracks();
 
-      };
         
       //function to play previous song
       function prevSong(){
