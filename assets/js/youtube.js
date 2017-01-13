@@ -299,7 +299,7 @@ $(document).ready(function(){
   // COMMENT OUT LATER
   getVideos_fromPlaylist("PLYPNYHaAOM8ncN-jTgNY25aFAYeMOQl9C", "North Lights");
 
-  // 6. catch video errors
+  // 6. catch video errors 
   $("video").on("error", function(){
     // debugger;
     console.warn("VIDEO CAN'T BE PLAYED --- playing the next one");

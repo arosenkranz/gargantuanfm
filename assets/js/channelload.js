@@ -61,6 +61,8 @@ $(document).ready(function() {
         }
     };
 
+    audio.addEventListener('error',nextSong);
+
     //function to play previous song
     function prevSong() {
         if (trackNumber > 0) {
