@@ -56,6 +56,9 @@ function playListButtonListener(){
   // reset the currentVideoIndex to zero & empty the array;
   currentVideoIndex = 0;
   nextVideoIndex = 0;
+  next_mp4_url = "";
+  videos_array = [];
+
   // Display the static.gif
   $("#backgroundVideo").removeAttr("autoplay");
   document.querySelector("#backgroundVideo").load();
@@ -134,14 +137,14 @@ function next_Mp4(){
   if (nextVideoIndex >= videos_array.length){
     nextVideoIndex = 0;
   };
-  console.log(nextVideoIndex);
-  console.log(videos_array);
+  // console.log(nextVideoIndex);
+  // console.log(videos_array);
   var nextTitle = videos_array[nextVideoIndex]["title"];
   var nextID = videos_array[nextVideoIndex]["id"];
   var next_request_url = base_url + nextID;
 
   // console.log("Getting the next mp4 file ...");
-  debugger; // Getting the next mp4 file ...
+  // debugger; // Getting the next mp4 file ...
   $.ajax({
     url: next_request_url,
     dataType: "json"
@@ -156,11 +159,12 @@ function next_Mp4(){
       // Get the next video as next;
       debugger; // THERE WAS AN ERROR getting the next video!
       // getNextMp4();
+      next_Mp4();
       // getMp4file(videos_array[currentVideoIndex]["id"]);
     } else {
     // 3. If no error, set the next_mp4_url to that url
       next_mp4_url = response["url"];
-      console.log(response);
+      // console.log(response);
       // debugger; // successfully got the next mp4!
     }
   }); // closes ajax call
@@ -178,7 +182,7 @@ function getMp4file(videoID){
     // console.log(next_mp4_url);
     if (next_mp4_url == ""){
       // console.log("No next_mp4 ...");
-      debugger; // No next_mp4 ...
+      // debugger; // No next_mp4 ...
       // i) FIRST AJAX CALL --> get the first video
       $.ajax({
         url: request_url,
@@ -203,7 +207,7 @@ function getMp4file(videoID){
         }
 
         // SECOND $.ajax request
-        debugger; // SECOND $.ajax request
+        // debugger; // SECOND $.ajax request
         next_Mp4();
 
       }); // closes FIRST $.ajax request
@@ -214,11 +218,11 @@ function getMp4file(videoID){
     else {
       playVideo(next_mp4_url);
       next_mp4_url = ""; // reset it!
-      debugger; // there should be NO next_mp4_url
+      // debugger; // there should be NO next_mp4_url
 
       next_Mp4();
 
-      debugger; // there should be a next_mp4_url :)
+      // debugger; // there should be a next_mp4_url :)
       // Now get the next ajax call
 
       // WORKING ON
