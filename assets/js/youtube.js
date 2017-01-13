@@ -20,6 +20,7 @@ const playlist_dict = {
 };
 var videos_array; // array of video objects!
 var currentVideoIndex = 0; // current index of the video
+var next_mp4_url = "";
 
 // ---------------------------------------------------------
 // this function will take the `playlist_dict`
@@ -122,6 +123,46 @@ function getVideos_fromPlaylist(playlist_id, playlist_title){
   }) // closes .done promise
 }; // closes getVideos_fromPlaylist
 
+// ----------- #2.5 getMp4file()----------
+function getNextMp4(){
+  var base_url = "https://helloacm.com/api/video/?cached&video=https://www.youtube.com/watch?v=";
+  // ii) SECOND AJAX CALL --> get the next video's mp4 format
+  var nextVideoIndex = currentVideoIndex + 1;
+  if (nextVideoIndex >= videos_array.length){
+    nextVideoIndex = 0;
+  }
+  var nextTitle = videos_array[nextVideoIndex]["title"];
+  var nextID = videos_array[nextVideoIndex]["id"];
+  var next_request_url = base_url + nextID;
+
+  // console.log("Getting the next mp4 file ...");
+  debugger; // Getting the next mp4 file ...
+  $.ajax({
+    url: next_request_url,
+    dataType: "json"
+  }).done(function(response){
+    // debugger; // 2nd AJAX call, successful response
+    // console.log(response);
+    // 1. Check to see if the response has an error
+    if (response.hasOwnProperty("error")){
+      console.warn(response);
+      console.warn(videoID);
+      // 2. If response has an error
+      // TO DO
+      // currentVideoIndex ++;
+      // if (currentVideoIndex >= videos_array.length){
+      //   currentVideoIndex = 0;
+      // };
+      // getMp4file(videos_array[currentVideoIndex]["id"]);
+    } else {
+    // 3. If no error, set the next_mp4_url to that url
+      next_mp4_url = response["url"];
+      console.log(response);
+      // debugger; // successfully got the next mp4!
+    }
+  }); // closes ajax call
+}
+
 // ----------- #2 getMp4file()----------
 function getMp4file(videoID){
     // console.log(videoID);
@@ -130,34 +171,68 @@ function getMp4file(videoID){
     var request_url = base_url + videoID;
     // console.log(request_url);
 
-    // 2. make AJAX call to helloacm.com
-    $.ajax({
-      url: request_url,
-      dataType: "json"
-    })
-    .done(function(response){
-      // console.log(response);
-      if (response.hasOwnProperty("error")){
-        console.warn(response);
-        console.warn(videoID);
-        // *PLAY NEXT VIDEO;
-        currentVideoIndex ++;
-        if (currentVideoIndex >= videos_array.length){
-          currentVideoIndex = 0;
-        };
-        getMp4file(videos_array[currentVideoIndex]["id"]);
-      } else {
-        // 1. Get the proper url
-        var mp4_url = response["url"];
-        // 2. call make video Element function
-        playVideo(mp4_url);
-      }
-    })
-    // .fail(function(response){
-    //   console.log(response);
-    //   debugger;
-    // });
-}; // closes getMp4file;
+    // 2a. if there is no mp4 file, make AJAX call to helloacm.com
+    // console.log(next_mp4_url);
+    if (next_mp4_url == ""){
+      // console.log("No next_mp4 ...");
+      debugger; // No next_mp4 ...
+      // i) FIRST AJAX CALL --> get the first video
+      $.ajax({
+        url: request_url,
+        dataType: "json"
+      })
+      .done(function(response){
+        // console.log(response);
+        if (response.hasOwnProperty("error")){
+          console.warn(response);
+          console.warn(videoID);
+          // *PLAY NEXT VIDEO;
+          currentVideoIndex ++;
+          if (currentVideoIndex >= videos_array.length){
+            currentVideoIndex = 0;
+          };
+          getMp4file(videos_array[currentVideoIndex]["id"]);
+        } else {
+          // 1. Get the proper url
+          var mp4_url = response["url"];
+          // 2. call make video Element function
+          playVideo(mp4_url);
+        }
+      }); // closes FIRST $.ajax request
+
+      // SECOND $.ajax request
+      getNextMp4();
+    } // closes if statement
+
+    // 2b. Else, THERE IS a mp4 url available use that!
+    else {
+      playVideo(next_mp4_url);
+      next_mp4_url = ""; // reset it!
+      debugger;
+
+      // Now get the next ajax call
+
+      // WORKING ON
+      // var nextVideoIndex = currentVideoIndex + 1;
+      // if (nextVideoIndex >= videos_array.length){
+      //   nextVideoIndex = 0;
+      // }
+      // var nextID = videos_array[nextVideoIndex]["id"];
+      // var next_request_url = base_url + nextID;
+      // console.log("Getting the next mp4 file ...");
+      // debugger;
+      // $.ajax({
+      //   url: request_url,
+      //   dataType: "json"
+      // }).done(function(response){
+      //   console.log("SUCCESS");
+      //   console.log(response);
+      // }); // closes ajax call
+
+    } // closes else statement
+
+
+}; // closes getMp4file function;
 
 // ----------- #3 playVideo()----------
 function playVideo(url){
@@ -209,7 +284,7 @@ $(document).ready(function(){
 
   // 5. Default just play videos from nature?
   // COMMENT OUT LATER
-  getVideos_fromPlaylist("PLYPNYHaAOM8ncN-jTgNY25aFAYeMOQl9C", "North Lights");
+  getVideos_fromPlaylist("PLYPNYHaAOM8l-LTJ3uhaLa-waAzXwfX_B", "testing123");
 
   // 6. catch video errors
   $("video").on("error", function(){
