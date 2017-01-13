@@ -23,9 +23,6 @@ $(document).ready(function() {
         $('.show-button').html('Close Player');
         $('.logo').addClass('logo-small');
         $('.track-player').addClass('is-open');
-        // $('.display-buttons').animate({
-        //     bottom: '20vh'
-        // }, 'fast')
         channelId = $(this).data('channel').trim();
         playlistName = "";
         artists = [];
@@ -38,7 +35,6 @@ $(document).ready(function() {
     });
 
     function playTracks() {
-
         audio.currentTime = 0;
         var trackUrl = playlist[trackNumber];
         var songInfo = artists[trackNumber];
@@ -54,7 +50,7 @@ $(document).ready(function() {
                     $('audio').get(0).play();
                 }
             }, 150);
-            
+
             console.log("Track Number: " + trackNumber);
 
             $('audio').get(0).onended = function() {
@@ -101,6 +97,16 @@ $(document).ready(function() {
       trackNumber++;
       playTracks();
     };
+
+    $(document).keyup(function(e) {
+      console.log(e);
+      if (e.keyCode === 39) { 
+        nextSong();
+      }
+     if (e.keyCode === 37) {
+        prevSong();
+     }
+    })
 
     // Pulls the selected channel's info and passes it into our audio element 
     function loadChannel() {

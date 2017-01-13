@@ -46,11 +46,11 @@ a:focus {
   border: none;
   box-shadow: 0px 0px 14px 1px #FF00FF;
   border-radius: 12px;
-  background: #000;
+  background-color: #000;
 }
 
 .button:hover, .button:focus {
-  background: rgba(0,0,0,.7);
+  background-color: rgba(0,0,0,.7);
   color: #FF00FF;
 }
 
