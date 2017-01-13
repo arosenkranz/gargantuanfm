@@ -4,7 +4,7 @@ const playlist_dict = {
   // "playlist name" : "playlist id",
   "North Lights": "PLYPNYHaAOM8ncN-jTgNY25aFAYeMOQl9C",
   "Party Background": "PLmDOmgjgiHsg9L_50qUKKeTYa3CR33o9s",
-  "test123": "PLYPNYHaAOM8l-LTJ3uhaLa-waAzXwfX_B",
+  "5sec": "PLYPNYHaAOM8l-LTJ3uhaLa-waAzXwfX_B",
   "Skinemax (SFW)": "PL024F8B35E0A4B3D0",
   "Disney Channel Promos": "PL3296A205B81429C8",
   "70's Commercials": "PL6475244FE97F6743",
@@ -297,11 +297,13 @@ $(document).ready(function(){
 
   // 5. Default just play videos from nature?
   // COMMENT OUT LATER
-  getVideos_fromPlaylist("PLYPNYHaAOM8l-LTJ3uhaLa-waAzXwfX_B", "testing123");
+  getVideos_fromPlaylist("PLYPNYHaAOM8ncN-jTgNY25aFAYeMOQl9C", "North Lights");
 
   // 6. catch video errors
   $("video").on("error", function(){
-    console.warn("VIDEO CAN'T BE PLAYED");
+    // debugger;
+    console.warn("VIDEO CAN'T BE PLAYED --- playing the next one");
+    // console.warn($(this).val("src"));
     playNext();
   })
 }); // closes document.ready
