@@ -173,7 +173,7 @@ a:focus {
 }
 
 .music-information {
-  margin-top: 15px;
+  margin-top: 10px;
   font-size: 16px;
 }
 
@@ -184,7 +184,7 @@ a:focus {
 .display-buttons {
   position: fixed;
   padding-left:10px;
-  bottom: 0;
+  bottom: .3vh;
   z-index: 999;
 }
 .display-buttons button {

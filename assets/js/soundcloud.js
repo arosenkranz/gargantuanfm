@@ -120,7 +120,6 @@ $(document).ready(function(){
   $(".show-button").on("click", function() {
     if ($('.show-button').html() === "Close Player"){
       $('.show-button').html('Open Player');
-      $('.display-buttons').animate({bottom: '1.2vh'}, 'fast')
     }
     else if ($('.show-button').html() === "Open Player") {
       $('.show-button').html('Close Player');
@@ -142,6 +141,7 @@ $(document).ready(function(){
     }
   });
 
+  // Mouse timeout hides content
   var timeout = null;
 
   $(document).on('mousemove', function() {
@@ -153,6 +153,7 @@ $(document).ready(function(){
     timeout = setTimeout(function() {
         $('.main-body').fadeOut('slow');
     }, 10000);
-});
+  });
+
 
 });
