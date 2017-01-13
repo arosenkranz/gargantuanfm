@@ -7,7 +7,6 @@ $(document).ready(function() {
     var trackNumber;
     var playlistName;
     var audio = document.querySelector('audio');
-    var nextSongCount = 0;
 
     dataRef.ref('channels').on('child_added', function(childSnapshot) {
         // console.log(childSnapshot.val());
@@ -18,7 +17,6 @@ $(document).ready(function() {
 
     // When a channel is clicked, 
     $(document).on('click', '.channelButton', function() {
-        nextSongCount = 0;
         $('.current-time').css('opacity', '1');
         $('.channelList').fadeOut('slow');
         $('.show-channels').html('Show Channels');
@@ -46,24 +44,23 @@ $(document).ready(function() {
         var songInfo = artists[trackNumber];
         $('.song-info').html(songInfo);
         $('.playlist-info').html('NOW PLAYING: ' + playlistName);
-        $(document).prop('title', playlistName + ' // Gargantuan.FM')
+        $(document).prop('title', playlistName + ' // Gargantuan.FM');
         $('#play-pause').removeClass('fi-play').addClass('fi-pause');
         if (trackNumber < playlist.length) {
 
-            $('audio').attr("src", trackUrl + "?client_id=8761e61199b55df39ee27a92f2771aeb");
-            setTimeout(function() {
-                if ($('audio').get(0).paused) {
-                    $('audio').get(0).play();
-
-                }
-            }, 150);
-            console.log("Track Number: " + trackNumber);
-
-            $('audio').get(0).onended = function() {
-                nextSong();
-            }
+          $('audio').attr("src", trackUrl + "?client_id=8761e61199b55df39ee27a92f2771aeb");
+          setTimeout(function() {
+              if ($('audio').get(0).paused) {
+                  $('audio').get(0).play();
+              }
+          }, 150);
+          console.log("Track Number: " + trackNumber);
+          $('audio').get(0).onended = function() {
+              nextSong();
+          }
+        
         } else {
-            replay();
+          replay();
         }
     };
 
@@ -71,7 +68,7 @@ $(document).ready(function() {
     function prevSong() {
         if (trackNumber > 0) {
             trackNumber--;
-            setTimeout(playTracks, 150);
+            playTracks();
         } else {
             replay();
         }
@@ -101,15 +98,11 @@ $(document).ready(function() {
 
     //function to play next song
     function nextSong() {
-
-        if (nextSongCount < 2) {
-            nextSongCount++;
-            trackNumber++;
-            console.log("Next Song Count: " + nextSongCount);
-            playTracks();
-        } else {
-            nextSongCount = 0;
-        }
+      trackNumber++;
+      playTracks();
+    } else {
+        nextSongCount = 0;
+      }
     };
 
     // Pulls the selected channel's info and passes it into our audio element 
@@ -130,5 +123,5 @@ $(document).ready(function() {
         })
       playTracks();  
     };
-    
+
 });
