@@ -76,10 +76,12 @@ a:focus {
 }
 
 .logo-small .title {
-  -webkit-transform: scale(.7);
-  -moz-transform: scale(.7);
-  transform: scale(.7);
+  -webkit-transform: scale(.5);
+  -moz-transform: scale(.5);
+  transform: scale(.5);
   opacity: .5;
+  -webkit-filter: drop-shadow(0px 0px 4px #FF00FF);
+  filter: drop-shadow(0px 0px 4px #FF00FF);
 }
 
 .logo-small .gargantuan-btn {
@@ -182,7 +184,7 @@ a:focus {
 .display-buttons {
   position: fixed;
   padding-left:10px;
-  bottom: 1.2vh;
+  bottom: 0;
   z-index: 999;
 }
 .display-buttons button {

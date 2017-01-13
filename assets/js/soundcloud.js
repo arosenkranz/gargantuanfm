@@ -124,7 +124,7 @@ $(document).ready(function(){
     }
     else if ($('.show-button').html() === "Open Player") {
       $('.show-button').html('Close Player');
-      $('.display-buttons').animate({bottom: '20vh'}, 'fast')
+      // $('.display-buttons').animate({bottom: '20vh'}, 'fast')
     }
   });
 
@@ -142,5 +142,17 @@ $(document).ready(function(){
     }
   });
 
+  var timeout = null;
+
+  $(document).on('mousemove', function() {
+    $('.main-body').fadeIn('slow');
+    if (timeout !== null) {
+      clearTimeout(timeout);
+    }
+
+    timeout = setTimeout(function() {
+        $('.main-body').fadeOut('slow');
+    }, 10000);
+});
 
 });
