@@ -1,21 +1,38 @@
 $(document).ready(function() {
 
-  var channelId;
-  var counter = 0;
-  var playlist = [];
-  var artists = [];
-  var trackNumber;
-  var playlistName;
-  var audio = document.querySelector('audio');
+    var channelId;
+    var counter = 0;
+    var playlist = [];
+    var artists = [];
+    var trackNumber;
+    var playlistName;
+    var audio = document.querySelector('audio');
 
-  dataRef.ref('channels').on('child_added', function(childSnapshot) {
-    // console.log(childSnapshot.val());
-    $('.channelList').prepend('<div class="column column-block channelButton data-equalizer-watch data-channel="' + childSnapshot.key + '">'
-       + childSnapshot.val().channelName + '</div>');
-  }, function(errorObject) {
-    console.log("Errors handled: " + errorObject.code);
-  });
+    dataRef.ref('channels').on('child_added', function(childSnapshot) {
+        // console.log(childSnapshot.val());
+        $('.channelList').prepend('<div class="column column-block channelButton" data-equalizer-watch data-channel="' + childSnapshot.key + '">' + childSnapshot.val().channelName + '</div>');
+    }, function(errorObject) {
+        console.log("Errors handled: " + errorObject.code);
+    });
 
+    // When a channel is clicked, 
+    $(document).on('click', '.channelButton', function() {
+        $('.current-time').css('opacity', '1');
+        $('.channelList').fadeOut('slow');
+        $('.show-channels').html('Show Channels');
+        $('.show-button').html('Close Player');
+        $('.logo').addClass('logo-small');
+        $('.track-player').addClass('is-open');
+        channelId = $(this).data('channel').trim();
+        playlistName = "";
+        artists = [];
+        playlist = [];
+        trackNumber = 0;
+        console.log(trackNumber);
+        console.log(channelId);
+        loadChannel();
+
+    });
 
     function playTracks() {
         audio.currentTime = 0;
@@ -40,7 +57,7 @@ $(document).ready(function() {
                 nextSong();
             }
         } else {
-            replay(); // CALL STACK ERROR STARTS HERE!!!!
+            replay();
         }
     };
 
@@ -60,26 +77,6 @@ $(document).ready(function() {
         trackNumber = 0;
         playTracks();
     };
-
-    // ---------- EVENT LISTENERS ---------------
-    // When a channel is clicked,
-    $(document).on('click', '.channelButton', function() {
-        $('.current-time').css('opacity', '1');
-        $('.channelList').fadeOut('slow');
-        $('.show-channels').html('Show Channels');
-        $('.show-button').html('Close Player');
-        $('.logo').addClass('logo-small');
-        $('.track-player').addClass('is-open');
-        channelId = $(this).data('channel').trim();
-        playlistName = "";
-        artists = [];
-        playlist = [];
-        trackNumber = 0;
-        console.log(trackNumber);
-        console.log(channelId);
-        loadChannel();
-
-    });
 
     //plays previous track when prevButton clicked
     $(document).on('click', '#prevButton', function() {
@@ -103,7 +100,7 @@ $(document).ready(function() {
 
     $(document).keyup(function(e) {
       console.log(e);
-      if (e.keyCode === 39) {
+      if (e.keyCode === 39) { 
         nextSong();
       }
      if (e.keyCode === 37) {
@@ -111,11 +108,11 @@ $(document).ready(function() {
      }
     })
 
-    // Pulls the selected channel's info and passes it into our audio element
+    // Pulls the selected channel's info and passes it into our audio element 
     function loadChannel() {
         dataRef.ref('channels/' + channelId).once('value').then(function(snapshot) {
             playlistName = snapshot.val().channelName;
-            //pulls selected channel's tracks
+            //pulls selected channel's tracks 
             var channel = snapshot.val();
             var tracks = channel['tracks'];
 
