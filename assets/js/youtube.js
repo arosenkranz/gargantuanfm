@@ -210,4 +210,10 @@ $(document).ready(function(){
   // 5. Default just play videos from nature?
   // COMMENT OUT LATER
   getVideos_fromPlaylist("PLYPNYHaAOM8ncN-jTgNY25aFAYeMOQl9C", "North Lights");
+
+  // 6. catch video errors
+  $("video").on("error", function(){
+    console.warn("VIDEO CAN'T BE PLAYED");
+    playNext();
+  })
 }); // closes document.ready
