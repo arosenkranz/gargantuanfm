@@ -227,11 +227,11 @@ a:focus {
 }
 
 #audioControl i {
-  font-size: 75px;
-  line-height: 70px;
-  margin: 10px;
+  font-size: 57px;
+  line-height: 34px;
+  margin: 0px;
   padding: 10px;
-  cursor: pointer;
+  cursor: pointer
 }
 
 #channel-modal {
