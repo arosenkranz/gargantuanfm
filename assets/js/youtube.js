@@ -20,6 +20,7 @@ const playlist_dict = {
 };
 var videos_array; // array of video objects!
 var currentVideoIndex = 0; // current index of the video
+var nextVideoIndex = 0;
 var next_mp4_url = "";
 
 // ---------------------------------------------------------
@@ -54,6 +55,7 @@ function playListButtonListener(){
 
   // reset the currentVideoIndex to zero & empty the array;
   currentVideoIndex = 0;
+  nextVideoIndex = 0;
   // Display the static.gif
   $("#backgroundVideo").removeAttr("autoplay");
   document.querySelector("#backgroundVideo").load();
@@ -124,13 +126,16 @@ function getVideos_fromPlaylist(playlist_id, playlist_title){
 }; // closes getVideos_fromPlaylist
 
 // ----------- #2.5 getMp4file()----------
-function getNextMp4(){
+function next_Mp4(){
   var base_url = "https://helloacm.com/api/video/?cached&video=https://www.youtube.com/watch?v=";
-  // ii) SECOND AJAX CALL --> get the next video's mp4 format
-  var nextVideoIndex = currentVideoIndex + 1;
+  // SECOND AJAX CALL --> get the next video's mp4 format
+  // 1. Increment next video index
+  nextVideoIndex = nextVideoIndex + 1;
   if (nextVideoIndex >= videos_array.length){
     nextVideoIndex = 0;
-  }
+  };
+  console.log(nextVideoIndex);
+  console.log(videos_array);
   var nextTitle = videos_array[nextVideoIndex]["title"];
   var nextID = videos_array[nextVideoIndex]["id"];
   var next_request_url = base_url + nextID;
@@ -148,11 +153,9 @@ function getNextMp4(){
       console.warn(response);
       console.warn(videoID);
       // 2. If response has an error
-      // TO DO
-      // currentVideoIndex ++;
-      // if (currentVideoIndex >= videos_array.length){
-      //   currentVideoIndex = 0;
-      // };
+      // Get the next video as next;
+      debugger; // THERE WAS AN ERROR getting the next video!
+      // getNextMp4();
       // getMp4file(videos_array[currentVideoIndex]["id"]);
     } else {
     // 3. If no error, set the next_mp4_url to that url
@@ -161,7 +164,7 @@ function getNextMp4(){
       // debugger; // successfully got the next mp4!
     }
   }); // closes ajax call
-}
+} // closes get next_mp4();
 
 // ----------- #2 getMp4file()----------
 function getMp4file(videoID){
@@ -198,18 +201,24 @@ function getMp4file(videoID){
           // 2. call make video Element function
           playVideo(mp4_url);
         }
+
+        // SECOND $.ajax request
+        debugger; // SECOND $.ajax request
+        next_Mp4();
+
       }); // closes FIRST $.ajax request
 
-      // SECOND $.ajax request
-      getNextMp4();
     } // closes if statement
 
     // 2b. Else, THERE IS a mp4 url available use that!
     else {
       playVideo(next_mp4_url);
       next_mp4_url = ""; // reset it!
-      debugger;
+      debugger; // there should be NO next_mp4_url
 
+      next_Mp4();
+
+      debugger; // there should be a next_mp4_url :)
       // Now get the next ajax call
 
       // WORKING ON
