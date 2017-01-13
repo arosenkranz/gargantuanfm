@@ -44,23 +44,24 @@ $(document).ready(function() {
         var songInfo = artists[trackNumber];
         $('.song-info').html(songInfo);
         $('.playlist-info').html('NOW PLAYING: ' + playlistName);
-        $(document).prop('title', playlistName + ' // Gargantuan.FM');
+        $(document).prop('title', playlistName + ' // Gargantuan.FM')
         $('#play-pause').removeClass('fi-play').addClass('fi-pause');
         if (trackNumber < playlist.length) {
 
-          $('audio').attr("src", trackUrl + "?client_id=8761e61199b55df39ee27a92f2771aeb");
-          setTimeout(function() {
-              if ($('audio').get(0).paused) {
-                  $('audio').get(0).play();
-              }
-          }, 150);
-          console.log("Track Number: " + trackNumber);
-          $('audio').get(0).onended = function() {
-              nextSong();
-          }
-        
+            $('audio').attr("src", trackUrl + "?client_id=8761e61199b55df39ee27a92f2771aeb");
+            setTimeout(function() {
+                if ($('audio').get(0).paused) {
+                    $('audio').get(0).play();
+                }
+            }, 150);
+            
+            console.log("Track Number: " + trackNumber);
+
+            $('audio').get(0).onended = function() {
+                nextSong();
+            }
         } else {
-          replay();
+            replay();
         }
     };
 
@@ -68,7 +69,7 @@ $(document).ready(function() {
     function prevSong() {
         if (trackNumber > 0) {
             trackNumber--;
-            playTracks();
+            setTimeout(playTracks, 150);
         } else {
             replay();
         }
@@ -90,7 +91,6 @@ $(document).ready(function() {
 
     //plays next track when skipButton clicked
     $(document).on('click', '#skipButton', function() {
-
         $('audio').get(0).pause();
         $('audio').get(0).currentTime = 0;
         nextSong();
@@ -117,8 +117,7 @@ $(document).ready(function() {
             };
 
             //use html5 audio to play tracks
+            playTracks();
         })
-      playTracks();  
     };
-
 });
