@@ -100,9 +100,6 @@ $(document).ready(function() {
     function nextSong() {
       trackNumber++;
       playTracks();
-    } else {
-        nextSongCount = 0;
-      }
     };
 
     // Pulls the selected channel's info and passes it into our audio element 
