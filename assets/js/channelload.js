@@ -59,7 +59,10 @@ $(document).ready(function() {
         } else {
             replay();
         }
+
     };
+
+     
 
     //function to play previous song
     function prevSong() {
