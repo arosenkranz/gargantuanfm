@@ -14,6 +14,9 @@ const playlist_dict = {
   "Aquarium": "PLYPNYHaAOM8nigxkVQuNXiFiMqjK1TtTI",
   "Night Sky": "PLYPNYHaAOM8nt2VItdWuFwyDwPsgNeNp4",
   "GoPro": "PLYPNYHaAOM8k7bRf00K5wLf72mnTttDS4",
+  "Cats": "PLNXHyadglu_onSA7tfuWjJzPKKV7Fld1q",
+  "Horror Movies": "PLNXHyadglu_qQnOE4UGw2h76BMsNOicwm",
+  "Relaxing fires": "PLYPNYHaAOM8l0mSNUHryHpyNdgec4Sy4g",
 };
 var videos_array; // array of video objects!
 var currentVideoIndex = 0; // current index of the video
@@ -149,7 +152,11 @@ function getMp4file(videoID){
         // 2. call make video Element function
         playVideo(mp4_url);
       }
-    });
+    })
+    // .fail(function(response){
+    //   console.log(response);
+    //   debugger;
+    // });
 }; // closes getMp4file;
 
 // ----------- #3 playVideo()----------
