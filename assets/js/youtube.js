@@ -6,7 +6,6 @@ const playlist_dict = {
   "Party Background": "PLmDOmgjgiHsg9L_50qUKKeTYa3CR33o9s",
   "5sec": "PLYPNYHaAOM8l-LTJ3uhaLa-waAzXwfX_B",
   "Skinemax (SFW)": "PL024F8B35E0A4B3D0",
-  "Disney Channel Promos": "PL3296A205B81429C8",
   "70's Commercials": "PL6475244FE97F6743",
   "80's Commercials": "PLC3458763E3A3C5A2",
   "90's Commercials": "PL0E12D3DB9229B41D",
