@@ -152,7 +152,7 @@ $(document).ready(function(){
 
     timeout = setTimeout(function() {
         $('.main-body').fadeOut('slow');
-    }, 10000);
+    }, 4000);
   });
 
 
