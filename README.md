@@ -1,22 +1,21 @@
-# gargantuanfm
+# Gargantuan.FM
 RCB Project 1 (Team Gargantuan)
 
-## Installation
+## Description
 
-TODO: Describe the installation process
+With Gargantuan.FM, the user can easily throw on a curated playlist (channel) sourced from SoundCloud or he/she can make their own right from the site. While the music plays, the user also has the ability to change the visual scenery, sourced from curated YouTube playlists.
 
-## Usage
+## Technologies Used
 
-TODO: Write usage instructions
-
-## Contributing
-
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- Foundation
+- Firebase
+- SoundCloud API
+- YouTube API
+- Google Fonts
 
 ## Contributors
 
@@ -26,6 +25,16 @@ TODO: Write usage instructions
 
 *Alex [@alexrosenkranz](https://github.com/alexrosenkranz)
 
-## License
+## Upcoming Improvements
 
-MIT eh?
+- Incorporate user profiles
+
+- Allow for both public and private channels to be made
+
+- Allow users to save preference settings
+
+- User chat capabilities
+
+- A/B testing of UI to incorporate a better design
+
+- Youtube playlist uploader to allow users to stream their own pre-made video playlists
