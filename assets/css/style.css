@@ -233,7 +233,15 @@ a:focus {
   line-height: 34px;
   margin: 0px;
   padding: 10px;
-  cursor: pointer
+  cursor: pointer;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+}
+
+#audioControl i:hover {
+  -webkit-filter: drop-shadow(0px 0px 50px #FF00FF);
+  filter: drop-shadow(0px 0px 5px #FF00FF);
 }
 
 #channel-modal {
@@ -241,7 +249,7 @@ a:focus {
   padding: 20px;
   background: rgba(255,255,255,0.9);
   border: 5px solid black;
-  -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
+  -webkit-filter: drop-shadow(0px 0px 20px #FF00FF);
   filter: drop-shadow(0px 0px 20px #FF00FF);
 }
 
