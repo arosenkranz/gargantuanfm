@@ -115,7 +115,7 @@ $(document).ready(function(){
     $('.current-time').html(momentTime);
   }
 
-  setInterval(currentTime, 0);
+  setInterval(currentTime, 1000);
 
   $(".show-button").on("click", function() {
     if ($('.show-button').html() === "Close Player"){

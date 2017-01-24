@@ -107,7 +107,7 @@ a:focus {
   margin: 0;
 }
 
-.gargantuan-btn {
+.gargantuan-btn, .soundcloud-btn {
   background: url(../images/brush.png) no-repeat;
   -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
   filter: drop-shadow(0px 0px 10px #FF00FF);
@@ -124,7 +124,7 @@ a:focus {
   transition-property: all;
 }
 
-.gargantuan-btn:hover {
+.gargantuan-btn:hover, .soundcloud-btn:hover {
   transform: rotate(10deg);
 }
 
