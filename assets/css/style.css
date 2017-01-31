@@ -185,18 +185,14 @@ a:focus {
     bottom: 0;
     display: flex;
     align-items: center;
+    font-size: 25px
 }
 
 .position-left {
     transform: translateX(-100%);
 }
 
-.music-box {
-    padding: 20px;
-}
-
 .music-information {
-    font-size: 2.7vh;
     margin-top: 20px;
 }
 
@@ -290,12 +286,31 @@ a:focus {
     right: 0;
     bottom: 0;
     left: 0;
-    height: 20vh;
+    height: 25vh;
     background: url(data:image/svg+xml;base64,alotofcodehere);
-    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(62%, rgba(0, 0, 0, .9)));
-    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
-    background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
-    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, .9)));
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 100%);
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 100%);
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 100%);
+}
+
+@media screen and (max-device-width: 736px) {
+    .track-player {
+        height: 100%;
+        min-height: 140px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.75);
+        overflow: visible;
+        color: #fff;
+        bottom: 0;
+        display: flex;
+        align-items: flex-start;
+        padding-top: 3vh;
+        font-size: 16px;
+    }
+    .video-info {
+        display: none;
+    }
 }
