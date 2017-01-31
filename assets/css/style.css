@@ -1,261 +1,301 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin:400,400i,700');
-
 body {
-  font-family: 'Cabin', sans-serif;
-  margin: 0;
-  background:transparent url('../images/static.gif') 0 0 fixed;
-  background-size: cover;
+    font-family: 'Cabin', sans-serif;
+    margin: 0;
+    background: transparent url('../images/static.gif') 0 0 fixed;
+    background-size: cover;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  font-family: 'Cabin', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Cabin', sans-serif;
 }
 
 li {
-  list-style: none;
+    list-style: none;
 }
 
-audio{
-  float: left;
-  margin: 5px;
-
+audio {
+    float: left;
+    margin: 5px;
 }
 
-video{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  transform: translateX(-50%) translateY(-50%);
-  background-size: cover;
-  transition: 1s opacity;
-  background:transparent url('../images/static.gif') 0 0 fixed;
-  background-size: cover;
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    transition: 1s opacity;
+    background: transparent url('../images/static.gif') 0 0 fixed;
+    background-size: cover;
 }
 
 a:focus {
-  outline: none;
-  color: #fff;
+    outline: none;
+    color: #fff;
 }
 
 .button {
-  border: none;
-  box-shadow: 0px 0px 14px 1px #FF00FF;
-  border-radius: 12px;
-  background-color: #000;
+    border: none;
+    box-shadow: 0px 0px 14px 1px #FF00FF;
+    border-radius: 12px;
+    background-color: #000;
 }
 
-.button:hover, .button:focus {
-  background-color: rgba(0,0,0,.7);
-  color: #FF00FF;
+.button:hover,
+.button:focus {
+    background-color: rgba(0, 0, 0, .7);
+    color: #FF00FF;
 }
 
 .logo {
-  margin-top: 5vh;
-  transition-duration: 1s;
-  transition-timing-function: ease-in-out;
-  transition-property: all;
+    margin-top: 5vh;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    transition-property: all;
 }
-.title {
-  margin-bottom:20px;
-  opacity: 1;
-  -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
-  filter: drop-shadow(0px 0px 10px #FF00FF);
-  transition-duration: 1s;
-  transition-timing-function: ease-in-out;
-  transition-property: all;
 
+.title {
+    margin-bottom: 20px;
+    opacity: 1;
+    -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
+    filter: drop-shadow(0px 0px 10px #FF00FF);
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    transition-property: all;
 }
 
 .logo-small {
-  margin-top: 1vh;
+    padding-top: 1vh;
 }
 
 .logo-small .title {
-  -webkit-transform: scale(.5);
-  -moz-transform: scale(.5);
-  transform: scale(.5);
-  opacity: .5;
-  -webkit-filter: drop-shadow(0px 0px 4px #FF00FF);
-  filter: drop-shadow(0px 0px 4px #FF00FF);
+    -webkit-transform: scale(.7);
+    -moz-transform: scale(.7);
+    transform: scale(.7);
+    opacity: .5;
+    -webkit-filter: drop-shadow(0px 0px 4px #FF00FF);
+    filter: drop-shadow(0px 0px 4px #FF00FF);
 }
 
 .logo-small .gargantuan-btn {
-  display: none;
-} 
+    display: none;
+}
 
-.search-submit, .channel-create, .reset {
-  background: black;
-  font-weight: 700;
-  font-size: 16px;
-  margin: 0;
+.search-submit,
+.channel-create,
+.reset {
+    background: black;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0;
 }
 
 .underline {
-  margin-top: 15px;
-  border-top: 1px dotted black;
+    margin-top: 15px;
+    border-top: 1px dotted black;
 }
 
 .search-list .button {
-  background: black;
-  font-weight: 700;
-  font-size: 16px;
-  margin: 0;
+    background: black;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0;
 }
 
-.gargantuan-btn, .soundcloud-btn {
-  background: url(../images/brush.png) no-repeat;
-  -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
-  filter: drop-shadow(0px 0px 10px #FF00FF);
-  display: inline-block;
-  margin: 20px 0;
-  padding: 38px;
-  color: white;
-  background-size: contain;
-  background-position: center;
-  font-weight: 700;
-  font-size: 26px;
-  transition-duration: 1s;
-  transition-timing-function: ease-in-out;
-  transition-property: all;
+.gargantuan-btn,
+.soundcloud-btn {
+    background: url(../images/brush.png) no-repeat;
+    -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
+    filter: drop-shadow(0px 0px 10px #FF00FF);
+    display: inline-block;
+    margin: 20px 0;
+    padding: 28px;
+    color: white;
+    background-size: contain;
+    background-position: center;
+    font-weight: 700;
+    font-size: 22px;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    transition-property: all;
 }
 
-.gargantuan-btn:hover, .soundcloud-btn:hover {
-  transform: rotate(10deg);
+.gargantuan-btn:hover,
+.soundcloud-btn:hover {
+    transform: rotate(10deg);
+}
+
+.channel-body {
+    overflow: auto;
 }
 
 .channelList {
-  padding-bottom: 200px;
-  padding-top: 20px;
-  overflow: hidden;
+    padding-bottom: 200px;
+    padding-top: 20px;
+    overflow: hidden;
 }
 
 .small-12 .channelButton {
-  min-height: 90px;
+    min-height: 90px;
 }
 
 .channelButton {
-  background: url(../images/brush.png) no-repeat;
-  color: white;
-  background-size: contain;
-  background-position: center;
-  background-origin: content-box;
-  min-height: 131px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  text-transform: capitalize;
-  font-weight: 700;
-  -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
-  filter: drop-shadow(0px 0px 10px #FF00FF);
-  cursor: pointer;
-  transition-duration: 1s;
-  transition-timing-function: ease-in-out;
-  transition-property: all;
+    background: url(../images/brush.png) no-repeat;
+    color: white;
+    background-size: contain;
+    background-position: center;
+    background-origin: content-box;
+    min-height: 131px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 700;
+    -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
+    filter: drop-shadow(0px 0px 10px #FF00FF);
+    cursor: pointer;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    transition-property: all;
 }
 
 .channelButton:hover {
-  transform: rotate(10deg);
+    transform: rotate(10deg);
 }
 
 .track-player {
-  height: 12vh;
-  min-height: 140px;
-  background: rgba(0,0,0,0.7);
-  border-top:4px solid #FF00FF;
-  overflow: visible;
-  color: #fff;
+    height: 100%;
+    min-height: 140px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    overflow: visible;
+    color: #fff;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.position-left {
+    transform: translateX(-100%);
+}
+
+.music-box {
+    padding: 20px;
 }
 
 .music-information {
-  margin-top: 10px;
-  font-size: 16px;
+    font-size: 2.7vh;
+    margin-top: 20px;
 }
 
 .playlist-info {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .display-buttons {
-  position: fixed;
-  padding-left:10px;
-  bottom: .3vh;
-  z-index: 999;
-}
-.display-buttons button {
-  background: black;
-  font-weight: 700;
-  font-size: 16px;
+    position: fixed;
+    bottom: 2vh;
+    z-index: 999;
+    width: 100%;
 }
 
-.playlist-btn-container button{
-  background: black;
-  font-weight: 700;
-  font-size: 16px;
-  margin: 4px;
+.display-buttons button {
+    background: black;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.playlist-btn-container button {
+    background: black;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 4px;
 }
 
 .playlist-btn-container .active-btn {
-  background-color: rgba(0,0,0,0.7);
-  color: #FF00FF;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #FF00FF;
 }
 
 .video-info {
-  font-weight: 700;
-  margin-bottom:5px;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
 .js-off-canvas-overlay {
-  display: none !important;
+    display: none !important;
 }
 
 .credits {
-  color: #fff;
+    color: #fff;
 }
 
 .credits:hover {
-  text-decoration: underline;
-  color: #fff;
+    text-decoration: underline;
+    color: #fff;
 }
 
-#audioControl{
-  display: block;
-  margin-top: 10px;
+#audioControl {
+    display: block;
+    margin-top: 10px;
 }
 
 #audioControl i {
-  font-size: 57px;
-  line-height: 34px;
-  margin: 0px;
-  padding: 10px;
-  cursor: pointer;
-  transition-duration: .2s;
-  transition-timing-function: ease-in-out;
-  transition-property: all;
+    font-size: 57px;
+    line-height: 34px;
+    margin: 0px;
+    padding: 10px;
+    cursor: pointer;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    transition-property: all;
 }
 
 #audioControl i:hover {
-  -webkit-filter: drop-shadow(0px 0px 50px #FF00FF);
-  filter: drop-shadow(0px 0px 5px #FF00FF);
+    -webkit-filter: drop-shadow(0px 0px 50px #FF00FF);
+    filter: drop-shadow(0px 0px 5px #FF00FF);
 }
 
 #channel-modal {
-  max-height: 80vh;
-  padding: 20px;
-  background: rgba(255,255,255,0.9);
-  border: 5px solid black;
-  -webkit-filter: drop-shadow(0px 0px 20px #FF00FF);
-  filter: drop-shadow(0px 0px 20px #FF00FF);
+    max-height: 80vh;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 5px solid black;
+    -webkit-filter: drop-shadow(0px 0px 20px #FF00FF);
+    filter: drop-shadow(0px 0px 20px #FF00FF);
 }
 
 #channel-menu {
-  border:4px solid black;
-  background-color: rgba(255,255,255,0.7);
-  -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
-  filter: drop-shadow(0px 0px 20px #FF00FF);
+    border: 4px solid black;
+    background-color: rgba(255, 255, 255, 0.7);
+    -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
+    filter: drop-shadow(0px 0px 20px #FF00FF);
+}
+
+#gradient {
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 200px;
+    background: url(data:image/svg+xml;base64,alotofcodehere);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(62%, rgba(0, 0, 0, .9)));
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
 }

@@ -1,153 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Gargantuan.FM</title>
-  <link rel="shortcut icon" href="http://gargantuanfm.herokuapp.com/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="http://gargantuanfm.herokuapp.com/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/foundation.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link rel="stylesheet" type="text/css" href="assets/foundation-icons/foundation-icons.css">
-  <link rel="stylesheet" href="assets/css/app.css">
-  <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
-  <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
-  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-  <script src="assets/audiojs/audio.min.js"/>
-  <script>
-  audiojs.events.ready(function() {
-    var as = audiojs.createAll();
-  });
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Gargantuan.FM</title>
+    <link rel="shortcut icon" href="http://gargantuanfm.herokuapp.com/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="http://gargantuanfm.herokuapp.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/foundation-icons/foundation-icons.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="assets/audiojs/audio.min.js" />
+    <script>
+        audiojs.events.ready(function() {
+            var as = audiojs.createAll();
+        });
+    </script>
+
 
 </head>
 
 <body>
-  <video id="backgroundVideo" poster="assets/images/static.gif" playsinline autoplay muted>
-    <source type="video/mp4">
-  </video>
-  
+    <div id="gradient"></div>
+    <video id="backgroundVideo" poster="assets/images/static.gif" playsinline autoplay muted>
+      <source type="video/mp4">
+    </video>
 
-  <div class="main-body">
-    <div class="row logo">
-      <div class="small-12 medium-8 small-centered columns text-center">
-        <img class="title" src="assets/images/gargantuan_logo.png" alt="gargantuan logo" />
-        <button class="gargantuan-btn" data-toggle="channel-modal">Add A Channel</button>
+    <div class="main-body">
+        <div class="row logo">
+            <div class="small-12 medium-8 small-centered columns text-center">
+                <img class="title" src="assets/images/gargantuan_logo.png" alt="gargantuan logo" />
+                <button class="gargantuan-btn" data-toggle="channel-modal">Add A Channel</button>
 
-        <div class="reveal small text-center" id="channel-modal" data-reveal data-close-on-click="false" data-animation-in="scale-in-up">
-          <h1>Create A Channel</h1>
-          <form class="submitSong" data-abide>
-            <div class="input-wrapper">
-              <div class="alert callout" data-closable="slide-out-right" style="display:none"><p>Name is required and must be a string.</p>
-                <button class="close-button" aria-label="Dismiss alert" type="button" data-close><span aria-hidden="true">&times;</span></button>
-              </div>
+                <div class="reveal small text-center" id="channel-modal" data-reveal data-close-on-click="false" data-animation-in="scale-in-up">
+                    <h1>Create A Channel</h1>
+                    <form class="submitSong" data-abide>
+                        <div class="input-wrapper">
+                            <div class="alert callout" data-closable="slide-out-right" style="display:none">
+                                <p>Your channel needs a name!</p>
+                                <button class="close-button" aria-label="Dismiss alert" type="button" data-close><span aria-hidden="true">&times;</span></button>
+                            </div>
 
-              <input type="text" required pattern="[a-zA-Z]+" id="channel-name" placeholder="Channel Name"/>
+                            <input type="text" required id="channel-name" placeholder="Channel Name" />
 
-            </div>
+                        </div>
 
-            <input type="text"  id="songName" placeholder="Enter A Song or Artist"/>
+                        <input type="text" id="songName" placeholder="Enter A Song or Artist" />
 
-            <button class="search-submit button small float-left">Search for Song</button>
+                        <button class="search-submit button small float-left">Search for Song</button>
 
-            <div class="float-right">
-              <button type="submit" class="channel-create button small">Finish Creating Channel</button>
-              <button type="reset" class="reset button small">Reset Channel Info</button>
-            </div>
+                        <div class="float-right">
+                            <button type="submit" class="channel-create button small">Finish Creating Channel</button>
+                            <button type="reset" class="reset button small">Reset Channel Info</button>
+                        </div>
 
-          </form>
+                    </form>
 
-          <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
             <span aria-hidden="true">&times;</span>
           </button>
 
-          <div class="row">
-            <div class="small-12 columns">
-            <h2 class="underline">Songs On Channel</h2>
-              <ul class="small-up-2 medium-up-3 picked-songs">No Songs Picked Yet.</ul>
+                    <div class="row">
+                        <div class="small-12 columns">
+                            <h2 class="underline">Songs On Channel</h2>
+                            <ul class="small-up-2 medium-up-3 picked-songs">No Songs Picked Yet.</ul>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="small-12 columns">
+                            <h2 class="underline">Pick Your Song</h2>
+
+                            <ul class="small-up-2 medium-up-3 search-list">Hit Search and Then Look Here!</ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="row ">
-            <div class="small-12 columns">
-              <h2 class="underline">Pick Your Song</h2>
+        </div>
 
-              <ul class="small-up-2 medium-up-3 search-list">Hit Search and Then Look Here!</ul>
+        <!-- Channel List Area -->
+        <div class="row text-center channel-body">
+            <div class="small-12 medium-8 small-centered small-up-2 medium-up-2 large-up-3 text-center channelList" data-equalizer></div>
+        </div>
+
+        <div class="row expanded display-buttons">
+
+            <div class="playlist-btn-container text-center">
+                <button type="button" class="button small show-button" data-toggle="offCanvasLeft">Open Player</button>
+                <button type="button" class="button small show-channels">Hide Channels</button><br/>
+                <button class="button small channel-toggle" type="button" data-toggle="channel-menu" data-options="align:top">Change The Video Channel</button>
+                <div class="dropdown-pane top" id="channel-menu" data-dropdown></div>
+                <button class="button small" id="nextVideo">Skip Video</button>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-    
-    <!-- Channel List Area -->
-    <div class="row">
-      <div class="small-12 medium-8 small-centered small-up-1 medium-up-1 large-up-3 text-center channelList" data-equalizer></div>
-    </div>
 
-    <div class="row expanded display-buttons">
-      <button type="button" class="button small show-button" data-toggle="offCanvasBottom">Open Player</button>
-      <button type="button" class="button small show-channels">Hide Channels</button>
-    </div>
+        <div class="off-canvas position-left expanded row track-player" id="offCanvasLeft" data-off-canvas data-transition="push">
+            <div class="row music-box">
+                <div class="columns small-10 small-centered music-information text-center">
+                    <div class="playlist-info"></div>
+                    <div class="song-info"></div>
+                    <audio class="demoTrack"></audio>
+                </div>
 
-    <div class="off-canvas position-bottom expanded row track-player" id="offCanvasBottom" data-off-canvas data-transition="push">
-      <div class="columns small-12 medium-4 music-information text-right">
-          <div class="playlist-info"></div>
-          <div class="song-info"></div>
-          <audio id="jquery_jplayer_1" class="demoTrack jp-jplayer" ></audio>
-      </div>
 
-      <div class="columns small-12 medium-4 text-center">
-        <div id="audioControl">
-          <i id="prevButton" class="fi-previous"></i>
-          <i id="play-pause" class="fi-pause"></i>
-          <i id="skipButton" class="fi-next"></i>
+                <div class="columns small-10 small-centered music-information text-center">
+                    <div class="video-info"></div>
+                    <div class="playlist-link">
+
+
+                    </div>
+                </div>
+                <div class="columns small-10 small-centered text-center">
+                    <div id="audioControl">
+                        <i id="prevButton" class="fi-previous"></i>
+                        <i id="play-pause" class="fi-pause"></i>
+                        <i id="skipButton" class="fi-next"></i>
+                    </div>
+                    <div class="current-time"></div>
+                    <a class="credits" href="https://github.com/alexrosenkranz/gargantuanfm/">View Project Info</a>
+
+                </div>
+            </div>
         </div>
-        <div class="current-time"></div>
-        <a class="credits" href="https://github.com/alexrosenkranz/gargantuanfm/">View Project Info</a>
-
-      </div>
-      <div class="columns small-12 medium-4 music-information text-left">
-        <div class="video-info"></div>
-        <div class="playlist-link">
-          
-          <div class="playlist-btn-container">
-            <button class="button small channel-toggle" type="button" data-toggle="channel-menu" data-options="align:top">Change The Video Channel</button>
-            <div class="dropdown-pane top" id="channel-menu" data-dropdown></div>
-            <button class="button small" id="nextVideo">Skip Video</button>
-          </div>
-        </div>
-     </div>
     </div>
-  </div>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyA7DGECkMbsXDv0-JUb9OAozaTZgL__i-U",
-      authDomain: "gargantuan-2b182.firebaseapp.com",
-      databaseURL: "https://gargantuan-2b182.firebaseio.com",
-      storageBucket: "gargantuan-2b182.appspot.com",
-      messagingSenderId: "779803240904"
-    };
-    firebase.initializeApp(config);
-    var dataRef = firebase.database();
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyA7DGECkMbsXDv0-JUb9OAozaTZgL__i-U",
+            authDomain: "gargantuan-2b182.firebaseapp.com",
+            databaseURL: "https://gargantuan-2b182.firebaseio.com",
+            storageBucket: "gargantuan-2b182.appspot.com",
+            messagingSenderId: "779803240904"
+        };
+        firebase.initializeApp(config);
+        var dataRef = firebase.database();
 
 
-    SC.initialize({
-    client_id: '8761e61199b55df39ee27a92f2771aeb',
-    });
+        SC.initialize({
+            client_id: '8761e61199b55df39ee27a92f2771aeb',
+        });
+    </script>
 
-  </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/youtube.js"></script>
+    <script src="assets/js/vendor/what-input.js"></script>
+    <script src="assets/js/vendor/foundation.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/soundcloud.js"></script>
+    <script type="text/javascript" src="assets/js/channelload.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-  <script src="assets/js/api.js"></script>
-  <script src="assets/js/youtube.js"></script>
-  <script src="assets/js/vendor/what-input.js"></script>
-  <script src="assets/js/vendor/foundation.js"></script>
-  <script src="assets/js/app.js"></script>
-  <script type="text/javascript" src="assets/js/soundcloud.js"></script>
-  <script type="text/javascript" src="assets/js/channelload.js"></script>
 
 
 </body>
+
 </html>

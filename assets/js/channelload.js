@@ -39,7 +39,7 @@ $(document).ready(function() {
         var trackUrl = playlist[trackNumber];
         var songInfo = artists[trackNumber];
         $('.song-info').html(songInfo);
-        $('.playlist-info').html('NOW PLAYING: ' + playlistName);
+        $('.playlist-info').html('NOW PLAYING<br/>' + playlistName);
         $(document).prop('title', playlistName + ' // Gargantuan.FM')
         $('#play-pause').removeClass('fi-play').addClass('fi-pause');
         if (trackNumber < playlist.length) {
