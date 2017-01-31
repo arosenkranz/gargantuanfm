@@ -290,7 +290,7 @@ a:focus {
     right: 0;
     bottom: 0;
     left: 0;
-    height: 200px;
+    height: 20vh;
     background: url(data:image/svg+xml;base64,alotofcodehere);
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .9) 62%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(62%, rgba(0, 0, 0, .9)));
