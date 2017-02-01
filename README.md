@@ -40,3 +40,9 @@ With Gargantuan.FM, the user can easily throw on a curated playlist (channel) so
 - A/B testing of UI to incorporate a better design
 
 - Youtube playlist uploader to allow users to stream their own pre-made video playlists
+
+![Gargantuan.FM Pic 2] (https://github.com/alexrosenkranz/gargantuanfm/blob/master/readme_pics/gfm2.jpg)
+
+![Gargantuan.FM Pic 3] (https://github.com/alexrosenkranz/gargantuanfm/blob/master/readme_pics/gfm3.jpg)
+
+![Gargantuan.FM Pic 4] (https://github.com/alexrosenkranz/gargantuanfm/blob/master/readme_pics/gfm4.jpg)
