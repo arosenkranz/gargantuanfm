@@ -29,6 +29,8 @@ With Gargantuan.FM, the user can easily throw on a curated playlist (channel) so
 
 *Alex [@alexrosenkranz](https://github.com/alexrosenkranz)
 
+![Gargantuan.FM Gif 2] (https://github.com/alexrosenkranz/gargantuanfm/blob/master/readme_pics/gif2.gif)
+
 ## Upcoming Improvements
 - Incorporate user profiles / SoundCloud profile authentication
 
