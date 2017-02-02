@@ -1,5 +1,6 @@
 # Gargantuan.FM
 RCB Project 1 (Team Gargantuan)
+[Project Link] (https://gargantuanfm.herokuapp.com)
 
 ## Description
 With Gargantuan.FM, the user can easily throw on a curated playlist (channel) sourced from SoundCloud or he/she can make their own right from the site. While the music plays, the user also has the ability to change the visual scenery, sourced from curated YouTube playlists.
