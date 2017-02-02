@@ -1,5 +1,5 @@
 # Gargantuan.FM
-RCB Project 1 (Team Gargantuan)
+Rutgers Coding Bootcamp Front End Development Project
 
 [View Project] (https://gargantuanfm.herokuapp.com)
 
