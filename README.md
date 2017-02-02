@@ -14,8 +14,9 @@ With Gargantuan.FM, the user can easily throw on a curated playlist (channel) so
 - CSS
 - JavaScript
 - jQuery
-- Foundation
+- Foundation Framework
 - Firebase
+- Moment.js
 
 ## APIs Used
 - SoundCloud API
