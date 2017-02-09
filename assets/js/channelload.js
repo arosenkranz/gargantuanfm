@@ -8,6 +8,10 @@ $(document).ready(function() {
     var playlistName;
     var audio = document.querySelector('audio');
     var scUserId;
+    var scPlaylist = function(name, tracks) {
+        this.name = name;
+        this.tracks = tracks;
+    }
 
     $(document).on('click', '.sc-auth', function() {
         // initiate auth popup
@@ -21,7 +25,10 @@ $(document).ready(function() {
 
     function loadSCPlaylists(id) {
         SC.get('/users/' + id + '/playlists').then(function(playlists) {
-            console.log(playlists);
+            for (var i = 0; i < playlists.length; i++) {
+                var playlists[i].id = new scPlaylist(playlists[i].name, playlists[i].tracks);
+                console.log(playlists[i].id);
+            }
         });
     }
 
