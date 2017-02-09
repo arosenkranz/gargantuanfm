@@ -37,6 +37,7 @@
             <div class="small-12 medium-8 small-centered columns text-center">
                 <img class="title" src="assets/images/gargantuan_logo.png" alt="gargantuan logo" />
                 <button class="gargantuan-btn" data-toggle="channel-modal">Add A Channel</button>
+                <button class="gargantuan-btn sc-auth">SoundCloud</button>
 
                 <div class="reveal small text-center" id="channel-modal" data-reveal data-close-on-click="false" data-animation-in="scale-in-up">
                     <h1>Create A Channel</h1>
@@ -139,10 +140,16 @@
         };
         firebase.initializeApp(config);
         var dataRef = firebase.database();
-
-
         SC.initialize({
-            client_id: '8761e61199b55df39ee27a92f2771aeb',
+            client_id: 'VPeJNS9J8fyQ9gFSZs69JZgH4PLgsPK5',
+            redirect_uri: 'https://gargantuanfm.herokuapp.com/callback.html'
+        });
+        // initiate auth popup
+        SC.connect().then(function() {
+            return SC.get('/me');
+        }).then(function(me) {
+            alert('Hello, ' + me.username);
+            console.log(me)
         });
     </script>
 

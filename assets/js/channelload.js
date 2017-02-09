@@ -8,6 +8,17 @@ $(document).ready(function() {
     var playlistName;
     var audio = document.querySelector('audio');
 
+    $(document).on('click', '.sc-auth', function() {
+        // initiate auth popup
+        SC.connect().then(function() {
+            return SC.get('/me');
+        }).then(function(me) {
+            alert('Hello, ' + me.username);
+            console.log(me)
+        });
+    });
+
+
     dataRef.ref('channels').on('child_added', function(childSnapshot) {
         // console.log(childSnapshot.val());
         $('.channelList').prepend('<div class="column column-block channelButton" data-equalizer-watch data-channel="' + childSnapshot.key + '">' + childSnapshot.val().channelName + '</div>');
@@ -61,7 +72,7 @@ $(document).ready(function() {
         }
     };
 
-    audio.addEventListener('error',nextSong);
+    audio.addEventListener('error', nextSong);
 
     //function to play previous song
     function prevSong() {
@@ -96,18 +107,18 @@ $(document).ready(function() {
 
     //function to play next song
     function nextSong() {
-      trackNumber++;
-      playTracks();
+        trackNumber++;
+        playTracks();
     };
 
     $(document).keyup(function(e) {
-      console.log(e);
-      if (e.keyCode === 39) { 
-        nextSong();
-      }
-     if (e.keyCode === 37) {
-        prevSong();
-     }
+        console.log(e);
+        if (e.keyCode === 39) {
+            nextSong();
+        }
+        if (e.keyCode === 37) {
+            prevSong();
+        }
     })
 
     // Pulls the selected channel's info and passes it into our audio element 
