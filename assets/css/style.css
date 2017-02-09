@@ -114,7 +114,7 @@ a:focus {
 }
 
 .gargantuan-btn,
-.soundcloud-btn {
+.sc-auth {
     background: url(../images/brush.png) no-repeat;
     -webkit-filter: drop-shadow(0px 0px 10px #FF00FF);
     filter: drop-shadow(0px 0px 10px #FF00FF);
@@ -131,8 +131,12 @@ a:focus {
     transition-property: all;
 }
 
+.sc-auth {
+    font-size: 18px;
+}
+
 .gargantuan-btn:hover,
-.soundcloud-btn:hover {
+.sc-auth:hover {
     transform: rotate(10deg);
 }
 
