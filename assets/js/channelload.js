@@ -26,6 +26,7 @@ $(document).ready(function() {
 
     function loadSCPlaylists(id) {
         SC.get('/users/' + id + '/playlists').then(function(playlists) {
+            console.log(playlists);
             for (var i = 0; i < playlists.length; i++) {
                 var playlist = new scPlaylist(playlists[i].name, playlists[i].tracks);
                 scPlaylistArr.push(playlist);
