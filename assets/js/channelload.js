@@ -23,14 +23,13 @@ $(document).ready(function() {
         }).then(function(me) {
             console.log(me)
             loadSCPlaylists(me.id);
-            $(this).html("Welcome " + me.name + "!");
         });
 
     });
 
     function loadSCPlaylists(id) {
         SC.get('/users/' + id + '/playlists').then(function(playlists) {
-            console.log(playlists);
+            $('.sc-auth').html("Welcome " + me.username + "!");
             for (var i = 0; i < playlists.length; i++) {
                 var playlist = new scPlaylist(playlists[i].id, playlists[i].title, playlists[i].tracks);
                 scPlaylistArr.push(playlist);
