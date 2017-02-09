@@ -152,7 +152,20 @@ $(document).ready(function() {
         timeout = setTimeout(function() {
             $('.main-body').fadeOut('slow');
             $('#gradient').fadeOut('slow');
-        }, 4000);
+        }, 10000);
+    });
+
+    $(document).on('tap', function() {
+        $('.main-body').fadeIn('slow');
+        $('#gradient').fadeIn('slow');
+        if (timeout !== null) {
+            clearTimeout(timeout);
+        }
+
+        timeout = setTimeout(function() {
+            $('.main-body').fadeOut('slow');
+            $('#gradient').fadeOut('slow');
+        }, 10000);
     });
 
 
