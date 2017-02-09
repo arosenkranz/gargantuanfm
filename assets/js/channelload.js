@@ -166,16 +166,17 @@ $(document).ready(function() {
     function loadSCChannel() {
         var scId = $(this).data('channel');
         var selectedSCPlaylist = scPlaylistArr[scId];
+        console.log(selectedSCPlaylist);
         //pulls selected channel's tracks 
 
-        //pushes streaming urls into an array
-        for (var i = 0; i < selectedSCPlaylist.tracks.length; i++) {
-            artists.push(selectedSCPlaylist.tracks[i].user.username + ' - ' + selectedSCPlaylist.tracks[i].title);
-            playlist.push(selectedSCPlaylist.tracks[i].stream_url);
-        };
+        // //pushes streaming urls into an array
+        // for (var i = 0; i < selectedSCPlaylist.tracks.length; i++) {
+        //     artists.push(selectedSCPlaylist.tracks[i].user.username + ' - ' + selectedSCPlaylist.tracks[i].title);
+        //     playlist.push(selectedSCPlaylist.tracks[i].stream_url);
+        // };
 
-        //use html5 audio to play tracks
-        playTracks();
+        // //use html5 audio to play tracks
+        // playTracks();
 
     };
 });
