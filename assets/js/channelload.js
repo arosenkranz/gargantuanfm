@@ -9,7 +9,8 @@ $(document).ready(function() {
     var audio = document.querySelector('audio');
     var scUserId;
     var scPlaylistArr = [];
-    var scPlaylist = function(name, tracks) {
+    var scPlaylist = function(id, name, tracks) {
+        this.id = id;
         this.name = name;
         this.tracks = tracks;
     }
@@ -28,9 +29,12 @@ $(document).ready(function() {
         SC.get('/users/' + id + '/playlists').then(function(playlists) {
             console.log(playlists);
             for (var i = 0; i < playlists.length; i++) {
-                var playlist = new scPlaylist(playlists[i].name, playlists[i].tracks);
+                var playlist = new scPlaylist(playlists[i].id, playlists[i].title, playlists[i].tracks);
                 scPlaylistArr.push(playlist);
                 console.log(scPlaylistArr);
+            }
+            for (var i = 0; i < scPlaylistArr.length; i++) {
+                $('.channelList').prepend('<div class="column column-block channelButton" data-equalizer-watch data-source="SC" data-channel="' + i + '">' + scPlaylistArr[i].name + '</div>');
             }
         });
     }
@@ -58,7 +62,11 @@ $(document).ready(function() {
         trackNumber = 0;
         console.log(trackNumber);
         console.log(channelId);
-        loadChannel();
+        if ($(this).data('source') == "SC") {
+            loadSCChannel();
+        } else {
+            loadChannel();
+        }
 
     });
 
@@ -72,7 +80,7 @@ $(document).ready(function() {
         $('#play-pause').removeClass('fi-play').addClass('fi-pause');
         if (trackNumber < playlist.length) {
 
-            $('audio').attr("src", trackUrl + "?client_id=8761e61199b55df39ee27a92f2771aeb");
+            $('audio').attr("src", trackUrl + "?client_id=VPeJNS9J8fyQ9gFSZs69JZgH4PLgsPK5");
             setTimeout(function() {
                 if ($('audio').get(0).paused) {
                     $('audio').get(0).play();
@@ -155,5 +163,21 @@ $(document).ready(function() {
             //use html5 audio to play tracks
             playTracks();
         })
+    };
+
+    function loadSCChannel() {
+        var scId = $(this).data('channel');
+        var selectedSCPlaylist = scPlaylistArr[scId];
+        //pulls selected channel's tracks 
+
+        //pushes streaming urls into an array
+        for (var i = 0; i < selectedSCPlaylist.tracks.length; i++) {
+            artists.push(selectedSCPlaylist.tracks[i].user.username + ' - ' + selectedSCPlaylist.tracks[i].title);
+            playlist.push(selectedSCPlaylist.tracks[i].stream_url);
+        };
+
+        //use html5 audio to play tracks
+        playTracks();
+
     };
 });
