@@ -144,13 +144,6 @@
             client_id: 'VPeJNS9J8fyQ9gFSZs69JZgH4PLgsPK5',
             redirect_uri: 'https://gargantuanfm.herokuapp.com/callback.html'
         });
-        // initiate auth popup
-        SC.connect().then(function() {
-            return SC.get('/me');
-        }).then(function(me) {
-            alert('Hello, ' + me.username);
-            console.log(me)
-        });
     </script>
 
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
