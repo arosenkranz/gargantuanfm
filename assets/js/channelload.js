@@ -8,6 +8,7 @@ $(document).ready(function() {
     var playlistName;
     var audio = document.querySelector('audio');
     var scUserId;
+    var scPlaylistId;
     var scPlaylistArr = [];
     var scPlaylist = function(id, name, tracks) {
         this.id = id;
@@ -31,11 +32,9 @@ $(document).ready(function() {
             for (var i = 0; i < playlists.length; i++) {
                 var playlist = new scPlaylist(playlists[i].id, playlists[i].title, playlists[i].tracks);
                 scPlaylistArr.push(playlist);
-                console.log(scPlaylistArr);
-            }
-            for (var i = 0; i < scPlaylistArr.length; i++) {
                 $('.channelList').prepend('<div class="column column-block channelButton" data-equalizer-watch data-source="SC" data-channel="' + i + '">' + scPlaylistArr[i].name + '</div>');
             }
+
         });
     }
 
@@ -56,10 +55,12 @@ $(document).ready(function() {
         $('.logo').addClass('logo-small');
         $('.track-player').addClass('is-open');
         playlistName = "";
+
         artists = [];
         playlist = [];
         trackNumber = 0;
         if ($(this).data('source') == "SC") {
+            scPlaylistId = $(this).data('channel');
             loadSCChannel();
         } else {
             channelId = $(this).data('channel').trim();
@@ -164,8 +165,7 @@ $(document).ready(function() {
     };
 
     function loadSCChannel() {
-        var scId = $(this).data('channel');
-        var selectedSCPlaylist = scPlaylistArr[scId];
+        var selectedSCPlaylist = scPlaylistArr[scPlaylistId];
         console.log(selectedSCPlaylist);
         //pulls selected channel's tracks 
 
