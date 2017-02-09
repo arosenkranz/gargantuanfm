@@ -23,8 +23,9 @@ $(document).ready(function() {
         }).then(function(me) {
             console.log(me)
             loadSCPlaylists(me.id);
+            $(this).html("Welcome " + me.name + "!");
         });
-        $(this).fadeOut('slow');
+
     });
 
     function loadSCPlaylists(id) {
