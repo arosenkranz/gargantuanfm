@@ -7,16 +7,23 @@ $(document).ready(function() {
     var trackNumber;
     var playlistName;
     var audio = document.querySelector('audio');
+    var scUserId;
 
     $(document).on('click', '.sc-auth', function() {
         // initiate auth popup
         SC.connect().then(function() {
             return SC.get('/me');
         }).then(function(me) {
-            alert('Hello, ' + me.username);
             console.log(me)
+            loadSCPlaylists(me.id);
         });
     });
+
+    function loadSCPlaylists(id) {
+        SC.get('/users/' + id + '/playlists').then(function(playlists) {
+            console.log(playlists);
+        });
+    }
 
 
     dataRef.ref('channels').on('child_added', function(childSnapshot) {
