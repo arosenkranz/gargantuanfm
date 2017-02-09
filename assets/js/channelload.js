@@ -21,7 +21,7 @@ $(document).ready(function() {
         SC.connect().then(function() {
             return SC.get('/me');
         }).then(function(me) {
-            console.log(me)
+            $('.sc-auth').html("Welcome " + me.username + "!");
             loadSCPlaylists(me.id);
         });
 
@@ -29,7 +29,6 @@ $(document).ready(function() {
 
     function loadSCPlaylists(id) {
         SC.get('/users/' + id + '/playlists').then(function(playlists) {
-            $('.sc-auth').html("Welcome " + me.username + "!");
             for (var i = 0; i < playlists.length; i++) {
                 var playlist = new scPlaylist(playlists[i].id, playlists[i].title, playlists[i].tracks);
                 scPlaylistArr.push(playlist);
