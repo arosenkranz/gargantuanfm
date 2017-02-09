@@ -55,16 +55,14 @@ $(document).ready(function() {
         $('.show-button').html('Close Player');
         $('.logo').addClass('logo-small');
         $('.track-player').addClass('is-open');
-        channelId = $(this).data('channel').trim();
         playlistName = "";
         artists = [];
         playlist = [];
         trackNumber = 0;
-        console.log(trackNumber);
-        console.log(channelId);
         if ($(this).data('source') == "SC") {
             loadSCChannel();
         } else {
+            channelId = $(this).data('channel').trim();
             loadChannel();
         }
 
