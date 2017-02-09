@@ -155,7 +155,7 @@ $(document).ready(function() {
         }, 10000);
     });
 
-    $(document).on('tap', function() {
+    $(document).on('tap', 'body', function() {
         $('.main-body').fadeIn('slow');
         $('#gradient').fadeIn('slow');
         if (timeout !== null) {
