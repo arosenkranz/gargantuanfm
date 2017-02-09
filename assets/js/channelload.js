@@ -8,6 +8,7 @@ $(document).ready(function() {
     var playlistName;
     var audio = document.querySelector('audio');
     var scUserId;
+    var scPlaylistArr = [];
     var scPlaylist = function(name, tracks) {
         this.name = name;
         this.tracks = tracks;
@@ -26,8 +27,9 @@ $(document).ready(function() {
     function loadSCPlaylists(id) {
         SC.get('/users/' + id + '/playlists').then(function(playlists) {
             for (var i = 0; i < playlists.length; i++) {
-                var playlists[i].id = new scPlaylist(playlists[i].name, playlists[i].tracks);
-                console.log(playlists[i].id);
+                var playlist = new scPlaylist(playlists[i].name, playlists[i].tracks);
+                scPlaylistArr.push(playlist);
+                console.log(scPlaylistArr);
             }
         });
     }
