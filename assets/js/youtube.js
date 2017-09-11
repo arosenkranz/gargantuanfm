@@ -25,7 +25,6 @@ $(document).ready(function () {
   var next_mp4_url = "";
 
   var options = {
-    volume: 0,
     loadSprite: false,
     autoplay: true,
     displayDuration: false,
@@ -33,18 +32,13 @@ $(document).ready(function () {
     debug: true,
   }
 
-  var player  = plyr.setup(document.querySelectorAll('.js-player'), options);
+  var player = plyr.setup(document.querySelectorAll('.js-player'), options);
   $("#backgroundVideo").hide();
-  console.log(player);
-  console.log(player[0])
-  
-  player[0].on("ready", function() {
+
+  player[0].on("ready", function () {
     $("#backgroundVideo").show();
-    
     player[0].play();
     // player[0].toggleMute();
-    
-    
   })
 
   // ---------------------------------------------------------
@@ -151,7 +145,7 @@ $(document).ready(function () {
         videos_array = videos_list;
         // 3. Try to get the mp4 file of the first video
         console.log("this went")
-        
+
         playVideo(videos_array[currentVideoIndex]["id"]); // function #2
       }) // closes .done promise
   }; // closes getVideos_fromPlaylist
@@ -286,17 +280,17 @@ $(document).ready(function () {
     // turn autoplay back on
     // document.querySelector("#backgroundVideo").load();
     $("#backgroundVideo").hide();
-    
+
     $("#backgroundVideo").attr("data-video-id", url);
     player[0].source({
-      type:       'video',
-      title:      "whatever",
+      type: 'video',
+      title: "whatever",
       sources: [{
-          src:    url,
-          type:   'youtube'
+        src: url,
+        type: 'youtube'
       }]
-    });    
-    
+    });
+
     var video = videos_array[currentVideoIndex];
     var current_playlist = video["playlist"];
     // DEVELOPMENT - testing code below:
@@ -336,10 +330,21 @@ $(document).ready(function () {
 
   // 4. event listener to skip current video
   $("button#nextVideo").on("click", playNext);
-  $("button#muteVideo").on("click", function() {
+  $("button#muteVideo").on("click", function () {
     player[0].toggleMute();
+    var buttonState = $(this).text();
+
+    if (buttonState === "Mute Video") {
+      $(this).text("Unmute Video");
+    } else {
+      $(this).text("Mute Video");
+    }
   });
 
+  setTimeout(function () {
+    $("button#muteVideo").click();
+
+  }, 3000)
   // 5. Default just play videos from nature?
   // COMMENT OUT LATER
   getVideos_fromPlaylist("PLYPNYHaAOM8ncN-jTgNY25aFAYeMOQl9C", "North Lights");
