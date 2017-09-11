@@ -30,6 +30,7 @@ $(document).ready(function () {
     autoplay: true,
     displayDuration: false,
     controls: [],
+    debug: true,
   }
 
   var player = plyr.setup(document.querySelectorAll('.js-player'), options);
@@ -99,7 +100,7 @@ $(document).ready(function () {
     var video = videos_array[currentVideoIndex];
     var videoId = video.id;
     console.log(video)
-    getMp4file(videoId);
+    playVideo(videoId);
   }
 
   // ----------------------START: YOUTUBE API -----------------------------------
@@ -272,7 +273,13 @@ $(document).ready(function () {
     // turn autoplay back on
     // document.querySelector("#backgroundVideo").load();
     $("#backgroundVideo").attr("data-video-id", url);
-    player[0].play();
+    
+    player[0].on("ready", function() {
+      player[0].play();
+      player[0].on("error", function (err) {
+        console.log(err);
+      })
+    })
     // player[0].toggleMute();
     var video = videos_array[currentVideoIndex];
     var current_playlist = video["playlist"];
