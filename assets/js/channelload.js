@@ -78,7 +78,7 @@ $(document).ready(function() {
         $(document).prop('title', playlistName + ' // Gargantuan.FM')
         $('#play-pause').removeClass('fi-play').addClass('fi-pause');
         if (trackNumber < playlist.length) {
-
+            console.log(trackUrl)
             $('audio').attr("src", trackUrl + "?client_id=VPeJNS9J8fyQ9gFSZs69JZgH4PLgsPK5");
             setTimeout(function() {
                 if ($('audio').get(0).paused) {

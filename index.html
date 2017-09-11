@@ -12,13 +12,14 @@
     <link rel="stylesheet" href="assets/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/foundation-icons/foundation-icons.css">
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="https://cdn.plyr.io/2.0.13/plyr.css">    
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
     <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="assets/audiojs/audio.min.js" />
+
     <script>
-        audiojs.events.ready(function() {
+        audiojs.events.ready(function () {
             var as = audiojs.createAll();
         });
     </script>
@@ -26,11 +27,15 @@
 
 </head>
 
-<body>
+<body style="background: url('assets/images/static.gif') no-repeat cover">
     <div id="gradient"></div>
-    <video id="backgroundVideo" poster="assets/images/static.gif" playsinline autoplay muted>
-      <source type="video/mp4">
+    <!-- <video id="backgroundVideo" poster="assets/images/static.gif" playsinline autoplay muted>
+        <source type="file" accept="video/*">
     </video>
+    <iframe type="text/html" id="videoPlayer" style="width: 100vh; height: 100vh" src="" frameborder="0">
+    </iframe> -->
+    <div data-type="youtube" data-video-id="" id="backgroundVideo" class="js-player"></div>
+    
 
     <div class="main-body">
         <div class="row logo">
@@ -147,8 +152,9 @@
     </script>
 
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="https://cdn.plyr.io/2.0.13/plyr.js"></script>
+    
     <!-- Include the jQuery Mobile library -->
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="assets/js/api.js"></script>
     <script src="assets/js/youtube.js"></script>
     <script src="assets/js/vendor/what-input.js"></script>
