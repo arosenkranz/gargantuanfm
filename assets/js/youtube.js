@@ -25,7 +25,7 @@ $(document).ready(function () {
   var next_mp4_url = "";
 
   var options = {
-    volume: 1,
+    volume: 0,
     loadSprite: false,
     autoplay: true,
     displayDuration: false,
@@ -33,9 +33,20 @@ $(document).ready(function () {
     debug: true,
   }
 
-  var player = plyr.setup(document.querySelectorAll('.js-player'), options);
+  var player  = plyr.setup(document.querySelectorAll('.js-player'), options);
+  $("#backgroundVideo").hide();
   console.log(player);
   console.log(player[0])
+  
+  player[0].on("ready", function() {
+    $("#backgroundVideo").show();
+    
+    player[0].play();
+    // player[0].toggleMute();
+    
+    
+  })
+
   // ---------------------------------------------------------
   // this function will take the `playlist_dict`
   // & create buttons of the playlist names
@@ -113,7 +124,7 @@ $(document).ready(function () {
         cache: false,
         url: base_url,
         data: {
-          key: API_KEY,
+          key: "AIzaSyAG_qDOrWsTLs9Scfz_flwEciLYlo3_ZPI",
           part: "snippet",
           playlistId: playlist_id,
           maxResults: 50,
@@ -139,6 +150,8 @@ $(document).ready(function () {
         // 2. update the global copy of the video playlist
         videos_array = videos_list;
         // 3. Try to get the mp4 file of the first video
+        console.log("this went")
+        
         playVideo(videos_array[currentVideoIndex]["id"]); // function #2
       }) // closes .done promise
   }; // closes getVideos_fromPlaylist
@@ -272,15 +285,18 @@ $(document).ready(function () {
     console.log(url)
     // turn autoplay back on
     // document.querySelector("#backgroundVideo").load();
-    $("#backgroundVideo").attr("data-video-id", url);
+    $("#backgroundVideo").hide();
     
-    player[0].on("ready", function() {
-      player[0].play();
-      player[0].on("error", function (err) {
-        console.log(err);
-      })
-    })
-    // player[0].toggleMute();
+    $("#backgroundVideo").attr("data-video-id", url);
+    player[0].source({
+      type:       'video',
+      title:      "whatever",
+      sources: [{
+          src:    url,
+          type:   'youtube'
+      }]
+    });    
+    
     var video = videos_array[currentVideoIndex];
     var current_playlist = video["playlist"];
     // DEVELOPMENT - testing code below:
@@ -320,6 +336,9 @@ $(document).ready(function () {
 
   // 4. event listener to skip current video
   $("button#nextVideo").on("click", playNext);
+  $("button#muteVideo").on("click", function() {
+    player[0].toggleMute();
+  });
 
   // 5. Default just play videos from nature?
   // COMMENT OUT LATER
