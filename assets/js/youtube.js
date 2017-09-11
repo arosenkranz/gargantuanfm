@@ -30,6 +30,7 @@ $(document).ready(function () {
     autoplay: true,
     displayDuration: false,
     controls: [],
+    clickToPlay: false,
     debug: true,
   }
 
