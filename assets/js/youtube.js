@@ -25,6 +25,7 @@ $(document).ready(function () {
   var next_mp4_url = "";
 
   var options = {
+    volume: 9,
     loadSprite: false,
     autoplay: true,
     displayDuration: false,
